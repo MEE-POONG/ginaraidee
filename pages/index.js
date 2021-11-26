@@ -1,11 +1,13 @@
 import Navbar from "../components/Navbar";
 import Yourmenu from "../components/yourmenu";
 
+
 export default function Home() {
   return (
-    <div>
+    <div>    
       <Navbar />
       <Yourmenu />
     </div>
+    
   );
 }
