@@ -40,7 +40,7 @@ function Navbar() {
 										duration={500}
 										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 									>
-										About
+										Contact
 									</Link>
 
 									<Link
@@ -51,7 +51,7 @@ function Navbar() {
 										duration={500}
 										className="cursor-pointer bg-black text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black"
 									>
-										Contact
+										Login admin
 									</Link>
 								</div>
 							</div>
@@ -138,7 +138,7 @@ function Navbar() {
 									duration={500}
 									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
-									About
+									Contact
 								</Link>
 
 
@@ -151,7 +151,7 @@ function Navbar() {
 									duration={500}
 									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
-									Contact
+									Login admin
 								</Link>
 							</div>
 						</div>
