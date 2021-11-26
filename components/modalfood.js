@@ -55,7 +55,7 @@ export default function Pray() {
                     type="button"
                     
                     onClick={() => {
-                        router.push('/madeyourself');
+                        router.push('/choose');
                       }}
           
                   >
