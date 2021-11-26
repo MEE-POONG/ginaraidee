@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-scroll";
-import Image from "next/image";
-import Logo from "../public/images/logoginaraidee.png";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div>
-			<nav className=" shadow-sm fixed w-full z-10">
+			<nav className=" shadow-sm w-full z-10 sticky">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full bg-yellow-400">
 						<div className="flex items-center  mx-20  justify-between w-full">
