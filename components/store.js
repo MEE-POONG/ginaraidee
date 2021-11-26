@@ -4,7 +4,7 @@ import Image from 'next/image';
 export function Store() {
     return (
         <div className="container mx-auto max-w-lg py-5">
-            <div className=" px-4 py-5 flex-auto">
+            <div className="px-4 flex-auto">
                 <div className="text-center">
                     <h1 className="text-2xl bg-shadow font-bold">สั่งอาหารจากร้านค้า</h1>
                 </div>

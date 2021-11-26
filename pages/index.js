@@ -1,13 +1,14 @@
 import Navbar from "../components/Navbar";
 import Yourmenu from "../components/yourmenu";
-
+import Footer from "../components/footer"
 
 export default function Home() {
   return (
-    <div>    
+    <><div>
       <Navbar />
       <Yourmenu />
-    </div>
-    
+
+
+    </div><div> <Footer /></div></>
   );
 }

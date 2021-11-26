@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/footer";
 // import Image from "next/image";
 
 export default function Madeyourself() {
@@ -14,7 +15,7 @@ export default function Madeyourself() {
           </div>
           <div className="py-5">
             <div className="border-2 border-gray-300 rounded-lg px-3 bg-white">
-              <p className="font-bold text-center text-lg">กระเพราหมูสับ</p>
+              <p className="py-2 font-bold text-center text-lg">กระเพราหมูสับ</p>
               <p className=" text-center text-lg">วัตถุดิบและวิธีการทำ</p>
               <div className="grid grid-cols-2 gap-1 ">
                 <div className="col-span-12 rounded-lg place-content-center">
@@ -42,6 +43,7 @@ export default function Madeyourself() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

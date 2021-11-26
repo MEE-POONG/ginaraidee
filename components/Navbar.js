@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-scroll";
+import { useRouter } from "next/router";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
+	const router = useRouter();
 	return (
 		<div>
 			<nav className=" shadow-sm w-full z-10 sticky">
@@ -11,7 +13,10 @@ function Navbar() {
 					<div className="flex items-center h-20 w-full bg-yellow-400">
 						<div className="flex items-center  mx-20  justify-between w-full">
 							<div className="flex justify-center items-center flex-shrink-0 ">
-								<h1 className=" font-bold text-xl cursor-pointer">
+								<h1 className=" font-bold text-xl cursor-pointer" type="button"
+								onClick={() => {
+									router.push("/index");
+								}}>
 									Gin<span className="text-white">Araidee</span>
 								</h1>
 							</div>
@@ -36,27 +41,6 @@ function Navbar() {
 										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 									>
 										About
-									</Link>
-									<Link
-										activeClass="work"
-										to="work"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-									>
-										Projects
-									</Link>
-
-									<Link
-										activeClass="Services"
-										to="work"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-									>
-										Services
 									</Link>
 
 									<Link
@@ -157,28 +141,6 @@ function Navbar() {
 									About
 								</Link>
 
-								<Link
-									href="/work"
-									activeClass="work"
-									to="work"
-									smooth={true}
-									offset={50}
-									duration={500}
-									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-								>
-									Projects
-								</Link>
-								<Link
-									href="/services"
-									activeClass="services"
-									to="services"
-									smooth={true}
-									offset={50}
-									duration={500}
-									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-								>
-									Services
-								</Link>
 
 								<Link
 									href="/contact"
