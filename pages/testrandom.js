@@ -15,7 +15,7 @@ export default function Testrandom() {
     <Image src="/images/pp1.webp" alt="" width={200} height={200} />,
     <Image src="/images/pp2.webp" alt="" width={200} height={200} />,
     <Image src="/images/pp3.webp" alt="" width={200} height={200} />,
-    <Image src="/images/pp4.webp" alt="" width={200} height={200} />,
+    <Image src="/images/pp4.webp" alt="" width={200} height={200} />, 
     <Image src="/images/pp5.webp" alt="" width={200} height={200} />,
     <Image src="/images/pp6.webp" alt="" width={200} height={200} />,
   ];
