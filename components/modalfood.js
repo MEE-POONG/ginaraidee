@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from 'next/router';
+import Testrandom from "../pages/testrandom";
 
 export default function Pray() {
   const [showModal, setShowModal] = React.useState(false);
@@ -10,7 +11,7 @@ export default function Pray() {
 
   return (
     <div className="container">
-      <div className="text-center my-4">
+      <div className="text-center my-4 ">
         <button
           className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded"
           onClick={() => setShowModal(true)}
@@ -22,13 +23,15 @@ export default function Pray() {
         <div>
           <div className="border-0 rounded-lg shadow-lg  flex flex-col w-11/12  m-auto  bg-gray-100 focus:outline-none">
             {/*body*/}
-
-            <div className="relative mt-5 justify-center mr-4">
+            
+            <div className=" mt-2 justify-center">
               <div className="text-center font-bold text-black text-2xl ">
                 อาหารของคุณในวันนี้
               </div>
+              <Testrandom/>
               {/* <div className=" px-10 py-2 mb-4"></div> */}
-              <div className=" container m-2 ">
+
+              {/* <div className=" container m-2 ">
                 <div className="text-center ">
                   <div className="">
                     <div className="grid grid-cols-2 gap-1 ">
@@ -62,7 +65,8 @@ export default function Pray() {
                     {"ตกลง"}
                   </button>
                 </div>
-              </div>
+              </div> */}
+                  
             </div>
           </div>
         </div>
