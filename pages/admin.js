@@ -11,32 +11,32 @@ export default function Admin() {
                         เพิ่มเมนูอาหาร
                     </h1>
                 </div>
-                <form class="w-full max-w-lg">
-                    <div class="w-full">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-first-name">
+                <form className="w-full max-w-lg">
+                    <div className="w-full">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" htmlFor="grid-first-name">
                             ชื่อเมนู
                         </label>
                         <input className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" />
                     </div>
-                    <div class="w-full">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-first-name">
+                    <div className="w-full">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" htmlFor="grid-first-name">
                             วัดถุดิบ
                         </label>
                         <textarea className="appearance-none block h-80 w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" />
                     </div>
-                    <div class="w-full">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-first-name">
+                    <div className="w-full">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" htmlFor="grid-first-name">
                             ขั้นตอนการทำ
                         </label>
                         <textarea className="appearance-none block h-80 w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" />
                     </div>
-                    <div class="w-full">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-first-name">
+                    <div className="w-full">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" htmlFor="grid-first-name">
                             ภาพอาหาร
                         </label>
                         <input className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="file" />
                     </div>
-                    <div className="text-center my-4">
+                    <div className="text-center py-4">
                         <button
                         className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded">
                        

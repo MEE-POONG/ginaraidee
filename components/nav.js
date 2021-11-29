@@ -3,6 +3,7 @@ import { Transition } from "@headlessui/react";
 import { Link } from "react-scroll";
 import { useRouter } from "next/router";
 
+
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const router = useRouter();
@@ -28,7 +29,7 @@ function Navbar() {
 										smooth={true}
 										offset={50}
 										duration={500}
-										className="cursor-pointer hover:bg-white font-bold text-black hover:text-black px-3 py-2 rounded-md text-x font-medium"
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 									>
 										เพิ่มเมนูอาหาร
 									</Link>
@@ -38,20 +39,21 @@ function Navbar() {
 										smooth={true}
 										offset={50}
 										duration={500}
-										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-x font-bold"
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 									>
-										About
+										เพิ่มร้านอาหาร
 									</Link>
 
 									<Link
+										href="/index"
 										activeClass="contact"
 										to="contact"
 										smooth={true}
 										offset={50}
 										duration={500}
-										className="cursor-pointer bg-black text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black"
+										className="cursor-pointer bg-black text-white hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm"
 									>
-										Logout
+										<a>Logout</a>
 									</Link>
 								</div>
 							</div>

@@ -43,16 +43,16 @@ function Navbar() {
 										Contact
 									</Link>
 
-									<Link
-										activeClass="contact"
-										to="contact"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer bg-black text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black"
+									<button
+										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
+
+										onClick={() => {
+											router.push('/signin');
+										}}
+
 									>
-										Login admin
-									</Link>
+										{"Login Admin"}
+									</button>
 								</div>
 							</div>
 						</div>
