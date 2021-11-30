@@ -1,7 +1,15 @@
-import '../styles/globals.css'
-import 'tailwindcss/tailwind.css'
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import "../styles/globals.css";
+import "tailwindcss/tailwind.css";
+import { RecoilRoot } from 'recoil';
 
-export default MyApp
+
+function MyApp({ Component, pageProps }) {
+   return (
+    <RecoilRoot>
+      <Component {...pageProps} />
+    </RecoilRoot>
+  );
+};
+
+
+export default MyApp;
