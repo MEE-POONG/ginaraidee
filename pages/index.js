@@ -9,6 +9,6 @@ export default function Home() {
       <Yourmenu />
 
 
-    </div><div> <Footer /></div></>
+    </div><div></div></>
   );
 }

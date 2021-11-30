@@ -28,16 +28,16 @@ export default function Testrandom() {
 
   return (
     <div className="text-center my-5 ">
-      <div className="text-gray-800 text-7xl my-8">{shuffled_array[num]}</div>
+      <div className="text-gray-800 text-7xl my-8 ">{shuffled_array[num]}</div>
       <button
         type="button"
         onClick={() => router.push("/")}
-        className="px-6 mx-2 text-center text-black h-12 duration-150 font-semibold bg-white border border-gray-300 hover:shadow-lg hover:bg-white rounded-lg focus:shadow-outline "
+        className=" px-6 mx-2 text-center text-black h-12 duration-150 font-semibold bg-white border border-gray-300 hover:shadow-lg hover:bg-white rounded-lg focus:shadow-outline "
       >
         สุ่มอีกครั้ง
       </button>
       <button
-        className="px-8 mx-2 text-center text-black h-12 duration-150 font-semibold bg-white border border-gray-300 hover:shadow-lg hover:bg-white rounded-lg focus:shadow-outline "
+        className="  px-8 mx-2 text-center text-black h-12 duration-150 font-semibold bg-white border border-gray-300 hover:shadow-lg hover:bg-white rounded-lg focus:shadow-outline "
         type="button"
         onClick={() => {
           router.push("/choose");
