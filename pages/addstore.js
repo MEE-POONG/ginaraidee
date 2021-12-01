@@ -1,5 +1,5 @@
 import Nav from "../components/Nav";
-import Footer from "../components/footer"
+// import Footer from "../components/footer"
 
 export default function Addstore() {
   return (

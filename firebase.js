@@ -3,6 +3,7 @@ import firebase from "firebase";
 const config = {
     apiKey: "AIzaSyBAPAW3HO-DnIrOKh3a9lGwbKgcaFlyAKw",
     authDomain: "jamebase-31ebe.firebaseapp.com",
+    databaseURL:"https://jamebase-31ebe-default-rtdb.firebaseio.com/",
     projectId: "jamebase-31ebe",
     storageBucket: "jamebase-31ebe.appspot.com",
     messagingSenderId: "420170254358",
