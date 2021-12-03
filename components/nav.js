@@ -23,38 +23,36 @@ function Navbar() {
 							</div>
 							<div className="hidden md:block">
 								<div className="ml-10 flex items-baseline space-x-4">
-									<Link
-										activeClass="Home"
-										to="about"
-										smooth={true}
-										offset={50}
-										duration={500}
+									<button
 										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-									>
-										เพิ่มเมนูอาหาร
-									</Link>
-									<Link
-										activeClass="about"
-										to="about"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-									>
-										เพิ่มร้านอาหาร
-									</Link>
 
-									<Link
-										href="/index"
-										activeClass="contact"
-										to="contact"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer bg-black text-white hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm"
+										onClick={() => {
+											router.push('/addfood');
+										}}
+
 									>
-										<a>Logout</a>
-									</Link>
+										{"เพิ่มเมนูอาหาร"}
+									</button>
+									<button
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+
+										onClick={() => {
+											router.push('/addstore');
+										}}
+
+									>
+										{"เพิ่มร้านอาหาร"}
+									</button>
+									<button
+										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
+
+										onClick={() => {
+											router.push('/');
+										}}
+
+									>
+										{"Logout"}
+									</button>
 								</div>
 							</div>
 						</div>

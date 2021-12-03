@@ -47,7 +47,7 @@ function Navbar() {
 										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
 
 										onClick={() => {
-											router.push('/signin');
+											router.push('/login');
 										}}
 
 									>
