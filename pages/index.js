@@ -4,11 +4,11 @@ import Footer from "../components/footer"
 
 export default function Home() {
   return (
-    <><div>
+    <div>
       <Navbar />
       <Yourmenu />
+      <Footer/>
 
-
-    </div><div></div></>
+    </div>
   );
 }

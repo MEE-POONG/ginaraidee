@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
-import Swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { useRouter } from "next/router";
 
 

@@ -14,7 +14,7 @@ export default function Pray() {
 
   return (
     <div className="container">
-      <div className="text-center my-4 ">
+      <div className="text-center my-4 py-5">
         <button
           className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded "
           onClick={() => setShowModal(true)}
