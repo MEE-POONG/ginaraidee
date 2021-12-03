@@ -1,5 +1,8 @@
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer"
+
+function Login() {
+    const router = useRouter();
+}
 
 export default function Signin() {
     return (
@@ -8,7 +11,7 @@ export default function Signin() {
             <div className="container mx-auto max-w-lg py-5">
                 <div className="px-4 flex-auto">
 
-                    <div className="py-5 block grid">
+                    <div className="py-5 block">
                         <div className="cursor-pointer mb-3 border-2 border-gray-300 rounded-lg px-3 bg-white">
                             <form className="w-full max-w-lg">
                                 <div className="py-5 text-center">

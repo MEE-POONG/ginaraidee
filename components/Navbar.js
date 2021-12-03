@@ -15,7 +15,7 @@ function Navbar() {
 							<div className="flex justify-center items-center flex-shrink-0 ">
 								<h1 className=" font-bold text-xl cursor-pointer" type="button"
 								onClick={() => {
-									router.push("/index");
+									router.push("/");
 								}}>
 									Gin<span className="text-white">Araidee</span>
 								</h1>

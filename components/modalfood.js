@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-// import Image from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Testrandom from "../pages/testrandom";
+
+
+
 
 export default function Pray() {
   const [showModal, setShowModal] = React.useState(false);
@@ -29,6 +32,7 @@ export default function Pray() {
                 อาหารของคุณในวันนี้
               </div>
               <Testrandom />
+              
               {/* <div className=" px-10 py-2 mb-4"></div> */}
 
               {/* <div className=" container m-2 ">
