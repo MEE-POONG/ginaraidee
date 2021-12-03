@@ -118,41 +118,36 @@ function Navbar() {
 								ref={ref}
 								className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3"
 							>
-								<Link
-									href="/home"
-									activeClass="home"
-									to="home"
-									smooth={true}
-									offset={50}
-									duration={500}
-									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-								>
-									เพิ่มเมนูอาหาร
-								</Link>
-								<Link
-									href="/about"
-									activeClass="about"
-									to="about"
-									smooth={true}
-									offset={50}
-									duration={500}
-									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-								>
-									About
-								</Link>
+								<button
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
+										onClick={() => {
+											router.push('/addfood');
+										}}
 
-								<Link
-									href="/contact"
-									activeClass="work"
-									to="work"
-									smooth={true}
-									offset={50}
-									duration={500}
-									className="cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-								>
-									Logout
-								</Link>
+									>
+										{"เพิ่มเมนูอาหาร"}
+									</button>
+									<button
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+
+										onClick={() => {
+											router.push('/addstore');
+										}}
+
+									>
+										{"เพิ่มร้านอาหาร"}
+									</button>
+									<button
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+
+										onClick={() => {
+											router.push('/');
+										}}
+
+									>
+										{"Logout"}
+									</button>
 							</div>
 						</div>
 					)}
