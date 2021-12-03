@@ -19,7 +19,11 @@
     "react-scroll": "^1.8.4",
     "react-spring": "^9.3.2",
     "recoil": "^0.5.2",
-    "recoil-persist": "^4.0.0"
+    "recoil-persist": "^4.0.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.1.7",
+    "swiper": "^5.2.0"
+
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
