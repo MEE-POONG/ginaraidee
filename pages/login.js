@@ -3,9 +3,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Swal from 'sweetalert2';
 import { useRouter } from "next/router";
-
-
-
+import Footer from '../components/footer';
 
 
 export default function Login() {
@@ -37,7 +35,7 @@ export default function Login() {
         <>
         <div>
         <Navbar />
-        <div className="container mx-auto max-w-lg py-5">
+        <div className="container mx-auto max-w-lg py-10">
             <div className="px-4 flex-auto">
 
                 <div className="py-5 block grid">
@@ -89,6 +87,7 @@ export default function Login() {
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
     </>
     )

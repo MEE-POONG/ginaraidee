@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link } from "react-scroll";
 import { useRouter } from "next/router";
 
-function Navbar() {
+function Nav() {
 	const [isOpen, setIsOpen] = useState(false);
 	const router = useRouter();
 	return (
@@ -22,8 +21,8 @@ function Navbar() {
 							</div>
 							<div className="hidden md:block">
 								<div className="ml-10 flex items-baseline space-x-4">
-								<button
-										className="cursor-pointer text-black font-semibold px-3 py-2 text-md hover:font-black"
+									<button
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 
 										onClick={() => {
 											router.push('/');
@@ -33,7 +32,7 @@ function Navbar() {
 										{"Home"}
 									</button>
 									<button
-										className="cursor-pointer text-black font-semibold px-3 py-2 text-md hover:font-black"
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
 
 										onClick={() => {
 											router.push('/');
@@ -118,7 +117,7 @@ function Navbar() {
 								className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3"
 							>
 								<button
-										className="w-full text-left cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
 										onClick={() => {
 											router.push('/');
@@ -127,18 +126,16 @@ function Navbar() {
 									>
 										{"Home"}
 									</button>
-
 									<button
-										className="w-full text-left cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
 										onClick={() => {
 											router.push('/');
 										}}
 
 									>
-										{"contact"}
+										{"Contact"}
 									</button>
-
 									<button
 										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
@@ -147,9 +144,8 @@ function Navbar() {
 										}}
 
 									>
-										{"Login admin"}
+										{"Login Admin"}
 									</button>
-
 							</div>
 						</div>
 					)}
@@ -159,4 +155,4 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+export default Nav;

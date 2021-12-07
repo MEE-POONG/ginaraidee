@@ -24,7 +24,7 @@ export default function Pray() {
       </div>
       {showModal ? (
         <div>
-          <div className="border-0 rounded-lg shadow-lg  flex flex-col w-11/12  m-auto  bg-gray-100 focus:outline-none">
+          <div className="border-2 rounded-lg shadow-lg flex flex-col w-11/12  m-auto  bg-gray-100 focus:outline-none">
             {/*body*/}
 
             <div className=" mt-2 justify-center">
