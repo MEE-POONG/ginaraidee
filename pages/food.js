@@ -2,7 +2,7 @@ import Nav from "../components/nav";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import Foodlist from "../components/foodlist";
+import Madeyourself from "./madeyourself";
 
 const initialState = {
     namemenu: '',
@@ -11,7 +11,7 @@ const initialState = {
 }
 
 const defaultUserState = []
-export default function Addfood() {
+export default function Food() {
     const [formUser, setFormUser] = useState(initialState)
     const [userList, setUserList] = useState(defaultUserState)
     const { namemenu, staple, step, } = formUser
@@ -131,7 +131,7 @@ export default function Addfood() {
                     </form>
                 </div>
             </div>
-            <Foodlist data={userList}/>
+            <Madeyourself data={userList}/>
           
         </div>
     );

@@ -1,49 +1,38 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Made from "../components/Made";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-// import Image from "next/image";
 
-export default function Madeyourself() {
-  return (
-    <div>
-      <Navbar />
+const initialState = {
+    namemenu: '',
+    staple: '',
+    step: '',
+}
 
-      <div className="container mx-auto max-w-lg py-5">
-        <div className=" px-4 py-5 flex-auto">
-          <div className="text-center">
-            <h1 className="text-2xl bg-shadow font-bold">ทำกินเอง</h1>
-          </div>
-          <div className="py-5">
-            <div className="border-2 border-gray-300 rounded-lg px-3 bg-white">
-              <p className="py-2 font-bold text-center text-lg">กระเพราหมูสับ</p>
-              <p className=" text-center text-lg">วัตถุดิบและวิธีการทำ</p>
-              <div className="grid grid-cols-2 gap-1 ">
-                <div className="col-span-12 rounded-lg place-content-center">
-                  <div className="grid grid-cols-6 gap-1 py-4 ">
-                    <div className="text-lg col-span-4">
-                      <p className="font-bold">วัตถุดิบ</p>
-                      <div className="pl-2">
-                        <p className="">1.หมูสับ</p>
-                        <p className="">2.ใบกระเพรา</p>
-                        <p className="">3.พริกแกง</p>
-                      </div>
-                      <div>
-                        <p className="font-bold">ขั้นตอนการทำ</p>
-                        <div className=" pl-2">
-                          <p className="">1.หมูสับ</p>
-                          <p className="">2.ใบกระเพรา</p>
-                          <p className="">3.พริกแกง</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+const defaultUserState = []
+export default function Addfood() {
+    const [userList, setUserList] = useState(defaultUserState)
+
+    useEffect(() => {
+        getUserData()
+    }, [])
+
+    const getUserData = async () => {
+        try {
+            const { data } = await axios.get('/api/users/')
+            setUserList(data?.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    return (
+        <div>
+           <Navbar/>
+            <Made data={userList}/>
+          <Footer/>
         </div>
-      </div>
-      <Footer/>
-    </div>
-  );
+    );
 }
