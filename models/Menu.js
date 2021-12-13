@@ -2,10 +2,10 @@
 
 import mongoose from 'mongoose'
 
-const UserSchema = new mongoose.Schema({
+const AddMenuSchema = new mongoose.Schema({
     namemenu: String,
     staple: String,
     step: String,
 })
 
-module.exports = mongoose.models.User || mongoose.model('User', UserSchema)
+module.exports = mongoose.models.AddMenu || mongoose.model('AddMenu', AddMenuSchema)

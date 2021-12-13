@@ -10,30 +10,35 @@ const initialState = {
     step: '',
 }
 
-const defaultUserState = []
+const defaultMenuState = []
 export default function Addfood() {
-    const [formUser, setFormUser] = useState(initialState)
-    const [userList, setUserList] = useState(defaultUserState)
-    const { namemenu, staple, step, } = formUser
+    const [formMenu, setFormMenu] = useState(initialState)
+    const [menuList, setMenuList] = useState(defaultMenuState)
+    const { namemenu, staple, step, } = formMenu
 
     useEffect(() => {
-        getUserData()
+        getMenuData()
     }, [])
 
-    const getUserData = async () => {
+    const getMenuData = async () => {
         try {
-            const { data } = await axios.get('/api/users/')
-            setUserList(data?.data)
+
+            const { data } = await axios.get('/api/menus')
+            setMenuList(data?.data)
+            console.log(data);
         } catch (error) {
             console.log(error);
         }
     }
 
+
     const handelSubmit = async (e) => {
         e.preventDefault()
-        await validationUser()
-        await setDataUser()
-        setFormUser(initialState)
+
+        await validationMenu()
+        await setDataMenu()
+        setFormMenu(initialState)
+        getMenuData()
         Swal.fire({
             icon: 'success',
             title: 'เพิ่มข้อมูลสำเร็จ',
@@ -43,9 +48,9 @@ export default function Addfood() {
 
     }
 
-    const setDataUser = async () => {
+    const setDataMenu = async () => {
         try {
-            await axios.post('/api/users', formUser)
+            await axios.post('/api/menus', formMenu)
         } catch (error) {
             return Swal.fire({
                 icon: 'error',
@@ -54,7 +59,7 @@ export default function Addfood() {
         }
     }
 
-    const validationUser = () => {
+    const validationMenu = () => {
         if ( !namemenu || !staple || !step ) {
             return Swal.fire({
                 icon: 'error',
@@ -80,7 +85,7 @@ export default function Addfood() {
                                 ชื่อเมนู
                             </label>
                             <input
-                                onChange={e => setFormUser({ ...formUser, namemenu: e.target.value })}
+                                onChange={e => setFormMenu({ ...formMenu, namemenu: e.target.value })}
                                 className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="namemenu"
                                 type="text"
@@ -92,7 +97,7 @@ export default function Addfood() {
                                 วัดถุดิบ
                             </label>
                             <textarea
-                                onChange={e => setFormUser({ ...formUser, staple: e.target.value })}
+                                onChange={e => setFormMenu({ ...formMenu, staple: e.target.value })}
                                 value={staple}
                                 className="appearance-none block h-80 w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="staple"
@@ -105,7 +110,7 @@ export default function Addfood() {
                                 ขั้นตอนการทำ
                             </label>
                             <textarea
-                                onChange={e => setFormUser({ ...formUser, step: e.target.value })}
+                                onChange={e => setFormMenu({ ...formMenu, step: e.target.value })}
                                 value={step}
                                 className="appearance-none block h-80 w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="step"
@@ -131,7 +136,7 @@ export default function Addfood() {
                     </form>
                 </div>
             </div>
-            <Foodlist data={userList}/>
+            <Foodlist data={menuList}/>
           
         </div>
     );

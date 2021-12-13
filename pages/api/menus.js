@@ -1,7 +1,7 @@
-// api/users.js
+// api/menus.js
 
 import dbConnect from '../../lib/dbConnect'
-import User from '../../models/User'
+import Menu from '../../models/Menu'
 
 export default async function handler (req, res) {
   const { method } = req
@@ -11,16 +11,16 @@ export default async function handler (req, res) {
   switch (method) {
     case 'GET':
       try {
-        const users = await User.find({})
-        res.status(200).json({ success: true, data: users })
+        const menus = await Menu.find({})
+        res.status(200).json({ success: true, data: menus })
       } catch (error) {
         res.status(400).json({ success: false })
       }
       break
     case 'POST':
       try {
-        const user = await User.create(req.body)
-        res.status(201).json({ success: true, data: user })
+        const menu = await Menu.create(req.body)
+        res.status(201).json({ success: true, data: menu })
       } catch (error) {
         res.status(400).json({ success: false })
       }

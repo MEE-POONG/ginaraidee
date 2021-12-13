@@ -48,11 +48,11 @@ export default function Foodlist({ data }) {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {data.map((user) => (
-                                            <tr key={user._id}>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.namemenu}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.staple}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.step}</td>
+                                        {data.map((menu) => (
+                                            <tr key={menu._id}>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.namemenu}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.staple}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.step}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <a href="#" className="text-indigo-600 hover:text-indigo-900">
                                                         Edit

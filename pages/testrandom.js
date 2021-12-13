@@ -2,134 +2,37 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import {listMenuState} from "../contaxt/listmenu"
+import { listMenuState } from "../contaxt/listmenu"
 import Image from "next/image";
 import _ from "lodash";
+import axios from "axios";
 
-const array = [
-  { id: "1", name: "สุ่มอีกรอบ", image: "/images/randomnow.png" },
-  {
-    id: "2",
-    name: "แกงเขียวหวาน",
-    image: "/images/kanggreensweet.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "3",
-    name: "แกงจืด",
-    image: "/images/kanggued.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "4",
-    name: "แกงหน่อไม้",
-    image: "/images/kangnormai.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "5",
-    name: "ต้มเล้ง",
-    image: "/images/tomrang2.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "6",
-    name: "แกงเหลือง",
-    image: "/images/kangreang.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "7",
-    name: "แกงส้ม",
-    image: "/images/kangsom.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "8",
-    name: "แกงไตปลา",
-    image: "/images/kangtaipra.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "9",
-    name: "แกงจับฉ่าย",
-    image: "/images/tomjubcai.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "10",
-    name: "ต้มข่าไก่",
-    image: "/images/tomkakai.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "11",
-    name: "แกงพะโล้",
-    image: "/images/tomparo.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "12",
-    name: "ต้มยำกุ้ง",
-    image: "/images/tomyamkung.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "13",
-    name: "ต้มแซ่บ",
-    image: "/images/tomz.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "14",
-    name: "กระเพรา",
-    image: "/images/krapao1.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  {
-    id: "15",
-    name: "กระเพราหมูกรอบ",
-    image: "/images/kapaomoogrob.jpg",
-    rawmaterial: "หมากรอบ",
-    stepfood: "ทำๆไปเถอะ",
-  },
-  // "/images/randomnow.png",
-  // "/images/kanggreensweet.jpg",
-  // "/images/kanggued.jpg",
-  // "/images/kangnormai.jpg",
-  // "/images/tomrang2.jpg",
-  // "/images/kangreang.jpg",
-  // "/images/kangsom.jpg",
-  // "/images/kangtaipra.jpg",
-  // "/images/tomjubcai.jpg",
-  // "/images/tomkakai.jpg",
-  // "/images/tomparo.jpg",
-  // "/images/tomyamkung.jpg",
-  // "/images/tomz.jpg",
-  // "/images/krapao1.jpg",
-  // "/images/kapaomoogrob.jpg",
-];
-
+const defaultMenuState = [
+  { id: "1", name: "สุ่มอีกรอบ", image: "/images/randomnow.png" }
+]
 export default function Testrandom() {
-  const [random, setRandom] = useState(array[0]);
+  const [menuList, setMenuList] = useState(defaultMenuState)
+  const [random, setRandom] = useState(menuList[0]);
+
+  useEffect(() => {
+    getMenuData()
+  }, [])
+
+  const getMenuData = async () => {
+    try {
+
+      const { data } = await axios.get('/api/menus')
+      setMenuList(data?.data)
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const setListMenu = useSetRecoilState(listMenuState);
   function randomImg() {
     let ran = setInterval(() => {
-      setRandom(_.shuffle(array)[0]);
+      setRandom(_.shuffle(menuList)[0]);
     }, 50);
     setTimeout(() => {
       clearInterval(ran);
@@ -143,11 +46,11 @@ export default function Testrandom() {
   return (
     <div className="text-center my-5 ">
       <div className="text-gray-800 text-7xl my-4 ">
-        <Image src={random.image} alt="" width={200} height={200} />
+        <Image src={random.image || '/images/randomnow.png'} alt="" width={200} height={200} />
       </div>
 
       <div className="m-2">
-        <div>คือ : {random.name}</div>
+        <div>คือ : {random.namemenu}</div>
       </div>
 
       <button

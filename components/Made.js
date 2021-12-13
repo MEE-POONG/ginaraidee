@@ -12,13 +12,13 @@ export default function Made({ data, listMenu }) {
             <h1 className="text-2xl bg-shadow font-bold ">ทำกินเอง</h1>
           </div>
           <>
-            <div className="py-5">
-              <div className="border-2 border-gray-300 rounded-lg px-3 bg-white py-5">
+            <div className="py-5 ">
+              <div className="border-2 border-gray-300 rounded-lg px-3 bg-white py-5 ">
                 <div className="font-bold text-center text-2xl">
                   {listMenu.name}
                 </div>
-                <div className="text-center py-2">
-                  <Image src={listMenu.image} alt="" width={200} height={200} />
+                <div className="text-center py-2 ">
+                  <Image src={listMenu.image} alt="" width={200} height={200} className="rounded-lg "/>
                 </div>
 
                 <p className=" text-center text-lg m-2">วัตถุดิบและวิธีการทำ</p>
