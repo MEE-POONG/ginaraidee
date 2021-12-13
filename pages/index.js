@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Yourmenu from "../components/yourmenu";
 import Footer from "../components/footer"
 import Testrandom from "./testrandom";
+import Popular from "../components/Popular";
 
 export default function Home() {
   return (
@@ -9,10 +10,8 @@ export default function Home() {
       <Navbar />
       <Yourmenu />
       {/* <Testrandom/> */}
-      <div className="">
-        <Footer/>
-        
-      </div>
+      <Popular />
+      <Footer />
     </div>
   );
 }
