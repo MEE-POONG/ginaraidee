@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/footer";
 // import Image from "next/image";
 
 export default function Made({ data }) {
@@ -38,7 +37,6 @@ export default function Made({ data }) {
                     ))}
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }
