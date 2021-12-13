@@ -3,6 +3,9 @@ import axios from "axios";
 import Made from "../components/Made";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
+import { useRecoilValue } from "recoil";
+import {listMenuState} from "../contaxt/listmenu"
+
 
 const initialState = {
     namemenu: '',
@@ -13,7 +16,8 @@ const initialState = {
 const defaultUserState = []
 export default function Addfood() {
     const [userList, setUserList] = useState(defaultUserState)
-
+    const listMenu = useRecoilValue(listMenuState);
+console.log(listMenu);
     useEffect(() => {
         getUserData()
     }, [])
@@ -31,7 +35,7 @@ export default function Addfood() {
     return (
         <div>
            <Navbar/>
-            <Made data={userList}/>
+            <Made data={userList} listMenu={listMenu}/>
           <Footer/>
         </div>
     );

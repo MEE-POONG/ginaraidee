@@ -3,9 +3,11 @@
 import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema({
-  namemenu: String,
-  staple: String,
-  step: String
+  id: String,
+  name: String,
+  image: String,
+  rawmaterial: String,
+  stepfood: String,
 })
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema)
