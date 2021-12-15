@@ -21,7 +21,7 @@ export default function Testrandom() {
   const getMenuData = async () => {
     try {
 
-      const { data } = await axios.get('/api/menus')
+      const { data } = await axios.get('/api/menu/')
       setMenuList(data?.data)
       console.log(data);
     } catch (error) {
