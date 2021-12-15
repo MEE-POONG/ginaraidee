@@ -14,6 +14,7 @@ const defaultMenuState = []
 export default function Addfood() {
     const [formMenu, setFormMenu] = useState(initialState)
     const [menuList, setMenuList] = useState(defaultMenuState)
+    const [isEdit, setIsEdit] = useState(false)
     const { namemenu, staple, step, } = formMenu
 
     useEffect(() => {
@@ -23,7 +24,7 @@ export default function Addfood() {
     const getMenuData = async () => {
         try {
 
-            const { data } = await axios.get('/api/menus')
+            const { data } = await axios.get('/api/menu/')
             setMenuList(data?.data)
             console.log(data);
         } catch (error) {
@@ -31,33 +32,26 @@ export default function Addfood() {
         }
     }
 
-
     const handelSubmit = async (e) => {
         e.preventDefault()
+        const validationError = validationMenu()
+        if (validationError) return
 
-        await validationMenu()
-        await setDataMenu()
+        const setDataError = await setDataMenu()
+        if (setDataError) return
+
         setFormMenu(initialState)
-        getMenuData()
-        Swal.fire({
+
+        await Swal.fire({
             icon: 'success',
             title: 'เพิ่มข้อมูลสำเร็จ',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2000
         })
 
+        await getMenuData()
     }
-
-    const setDataMenu = async () => {
-        try {
-            await axios.post('/api/menus', formMenu)
-        } catch (error) {
-            return Swal.fire({
-                icon: 'error',
-                title: 'เพิ่มข้อมูลไม่สำเร็จ'
-            })
-        }
-    }
+    
 
     const validationMenu = () => {
         if ( !namemenu || !staple || !step ) {
@@ -68,6 +62,66 @@ export default function Addfood() {
         }
     }
 
+    const getUserDataById = async (id) => {
+        try {
+            const { data } = await axios.get('/api/menu/' + id)
+            setIsEdit(true)
+            setFormMenu({
+                _id: data.data._id,
+                namemenu: data.data.namemenu,
+                staple: data.data.staple,
+                step: data.data.step,
+               
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const setDataMenu = async () => {
+        try {
+            if (isEdit) {
+                await axios.put('/api/menu/' + formMenu._id, formMenu)
+            } else {
+                await axios.post('/api/menu/', formMenu)
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'พังยับ',
+                text: 'พังอะครับพรี่ ติดต่อแอดมินด่วนๆ!'
+            })
+            return true
+        }
+    }
+    
+    const deleteUserById = async (id) => {
+        try {
+            await Swal.fire({
+                icon: 'info',
+                title: 'คุณต้องการลบข้อมูลนี้หรือไม่',
+                confirmButtonText: 'ต้องการ',
+                cancelButtonText: 'ไม่ต้องการ',
+                showCancelButton: true,
+            }).then(async e => {
+                if (e.isConfirmed) {
+                    await axios.delete('/api/menu/' + id)
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    getMenuData()
+                }
+            })
+        } catch (error) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'ลบข้อมูลไม่สำเร็จ',
+            })
+        }
+    }
 
     return (
         <div>
@@ -136,7 +190,7 @@ export default function Addfood() {
                     </form>
                 </div>
             </div>
-            <Foodlist data={menuList}/>
+            <Foodlist data={menuList} getUserDataById={getUserDataById} deleteUserById={deleteUserById}/>
           
         </div>
     );

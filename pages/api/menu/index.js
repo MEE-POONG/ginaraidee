@@ -1,7 +1,7 @@
 // api/menus.js
 
-import dbConnect from '../../lib/dbConnect'
-import Menu from '../../models/Menu'
+import dbConnect from '../../../lib/dbConnect'
+import Menu from '../../../models/Menu'
 
 export default async function handler (req, res) {
   const { method } = req

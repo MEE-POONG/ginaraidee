@@ -12,7 +12,7 @@ const people = [
     // More people...
 ]
 
-export default function Foodlist({ data }) {
+export default function Foodlist({ data, getUserDataById, deleteUserById }) {
     console.log(data);
     return (
         <div className="container mx-auto max-w-lg">
@@ -42,8 +42,11 @@ export default function Foodlist({ data }) {
                                             >
                                                 วิธีทำ
                                             </th>
-                                            <th scope="col" className="relative px-6 py-3">
-                                                <span className="sr-only">Edit</span>
+                                            <th
+                                                scope="col"
+                                                className="px-6 py-3 text-center text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >
+                                                จัดการ
                                             </th>
                                         </tr>
                                     </thead>
@@ -54,8 +57,11 @@ export default function Foodlist({ data }) {
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.staple}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.step}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                                                    <a onClick={() => getUserDataById(menu._id)} href="#" className="text-indigo-600 hover:text-indigo-900">
                                                         Edit
+                                                    </a>
+                                                    <a onClick={() => deleteUserById(menu._id)} href="#" className="ml-2 text-red-600 hover:text-red-900">
+                                                        Delete
                                                     </a>
                                                 </td>
                                             </tr>
