@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <Navbar />
       <Yourmenu />
-      {/* <Testrandom/> */}
+      <Testrandom/>
       <div className="">
         <Footer/>
       </div>
