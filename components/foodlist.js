@@ -1,4 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
+
 const people = [
     {
         name: 'Jane Cooper',
@@ -46,8 +47,15 @@ export default function Foodlist({ data, getUserDataById, deleteUserById }) {
                                                 scope="col"
                                                 className="px-6 py-3 text-center text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
+                                                ภาพ
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                className="px-6 py-3 text-center text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >
                                                 จัดการ
                                             </th>
+
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -56,6 +64,14 @@ export default function Foodlist({ data, getUserDataById, deleteUserById }) {
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.namemenu}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.staple}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.step}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{menu.img}</td>
+                                                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    <Image
+                                                        src={`/uploads/` + menu.img}
+                                                        alt=""
+                                                        width={50} height={50}
+                                                    />
+                                                </td>  */}
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <a onClick={() => getUserDataById(menu._id)} href="#" className="text-indigo-600 hover:text-indigo-900">
                                                         Edit

@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
   image: String,
   rawmaterial: String,
   stepfood: String,
+  
 })
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema)

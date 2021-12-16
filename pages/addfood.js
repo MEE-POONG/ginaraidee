@@ -3,30 +3,55 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Foodlist from "../components/foodlist";
+import FormData from "form-data";
+
 
 const initialState = {
     namemenu: '',
     staple: '',
     step: '',
+    img: '',
 }
 
 const defaultMenuState = []
 export default function Addfood() {
     const [formMenu, setFormMenu] = useState(initialState)
     const [menuList, setMenuList] = useState(defaultMenuState)
+    // const [imgs, setImages] = useState(initialState)
     const [isEdit, setIsEdit] = useState(false)
-    const { namemenu, staple, step, } = formMenu
+    const [imgFile, setImgFile] = useState(false)
+    const { namemenu, staple, step,img } = formMenu
 
     useEffect(() => {
         getMenuData()
     }, [])
 
+    const handelSubmitFile = async (event) => {
+        const file = event.target.files[0];
+        setImgFile(file);
+    }
+    const uploadImage = async (img) => {
+        try {
+            let formData = new FormData();
+            formData.append('file', img, img.name);
+            const { data } = await axios.post('/api/upload/', formData)
+            setFormMenu({ ...formMenu, img: data?.data?.filename })
+        } catch (error) {
+            return true
+        }
+    }
+
+    const showImage = () =>
+        !formMenu.img ?
+            imgFile
+                ? URL.createObjectURL(imgFile)
+                : "https://i.stack.imgur.com/y9DpT.jpg" : formMenu.img
+
+
     const getMenuData = async () => {
         try {
-
             const { data } = await axios.get('/api/menu/')
             setMenuList(data?.data)
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -36,29 +61,33 @@ export default function Addfood() {
         e.preventDefault()
         const validationError = validationMenu()
         if (validationError) return
-
+        const uploadError = await uploadImage(imgFile)
+        if (uploadError) return
         const setDataError = await setDataMenu()
         if (setDataError) return
-
+        console.log();
         setFormMenu(initialState)
-
+        // setImages(initialState);
+        setImgFile('')
         await Swal.fire({
             icon: 'success',
             title: 'เพิ่มข้อมูลสำเร็จ',
             showConfirmButton: false,
             timer: 2000
         })
-
         await getMenuData()
     }
-    
+
+
+
 
     const validationMenu = () => {
-        if ( !namemenu || !staple || !step ) {
-            return Swal.fire({
+        if (!namemenu || !staple || !step) {
+            Swal.fire({
                 icon: 'error',
                 title: 'กรอกข้อมูลไม่ครบไอ้เหี้ยเจมส์'
             })
+            return true
         }
     }
 
@@ -67,11 +96,12 @@ export default function Addfood() {
             const { data } = await axios.get('/api/menu/' + id)
             setIsEdit(true)
             setFormMenu({
+                img: data.data.img,
                 _id: data.data._id,
                 namemenu: data.data.namemenu,
                 staple: data.data.staple,
                 step: data.data.step,
-               
+
             })
         } catch (error) {
             console.log(error);
@@ -94,7 +124,7 @@ export default function Addfood() {
             return true
         }
     }
-    
+
     const deleteUserById = async (id) => {
         try {
             await Swal.fire({
@@ -122,6 +152,10 @@ export default function Addfood() {
             })
         }
     }
+
+
+
+
 
     return (
         <div>
@@ -172,12 +206,23 @@ export default function Addfood() {
 
                             />
                         </div>
-                        {/* <div className="w-full">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xl mb-2" htmlFor="grid-first-name">
-                                ภาพอาหาร
-                            </label>
-                            <input className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="file" />
-                        </div> */}
+                        <div className="col-span-6 justify-self-center">
+                            <img
+                                className="App-image"
+                                src={showImage()}
+                                alt=""
+                                width="500px"
+                            />
+                            <input
+                                onChange={handelSubmitFile}
+                                type="file"
+                                // value={img}
+                                name="img"
+                                id="img"
+                                autoComplete="given-name"
+                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            />
+                        </div>
                         <div className="text-center py-4">
                             <button
                                 className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded"
@@ -190,8 +235,8 @@ export default function Addfood() {
                     </form>
                 </div>
             </div>
-            <Foodlist data={menuList} getUserDataById={getUserDataById} deleteUserById={deleteUserById}/>
-          
+            <Foodlist data={menuList} getUserDataById={getUserDataById} deleteUserById={deleteUserById} />
+
         </div>
     );
 }
