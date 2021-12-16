@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Foodlist from "../components/foodlist";
+import Addmenulist from "./addmenuList";
 
 const initialState = {
     namemenu: '',
