@@ -28,12 +28,12 @@ export default function Made({ data, listMenu }) {
                     <div className="text-lg col-span-4">
                       <p className="font-bold py-2">วัตถุดิบ</p>
                       <div className="pl-2">
-                        <p className="">{listMenu.rawmaterial}</p>
+                        <p className="">{listMenu.staple}</p>
                       </div>
                       <div>
                         <p className="font-bold py-2">ขั้นตอนการทำ</p>
                         <div className=" pl-2">
-                          <p className="">{listMenu.stepfood}</p>
+                          <p className="">{listMenu.step}</p>
                         </div>
                       </div>
                     </div>

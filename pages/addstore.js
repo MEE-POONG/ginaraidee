@@ -60,7 +60,7 @@ export default function Addstore() {
         if (!namestore) {
             return Swal.fire({
                 icon: 'error',
-                title: 'กรอกข้อมูลไม่ครบไอ้เหี้ยเจมส์'
+                title: 'กรอกข้อมูลไม่ครบ'
             })
         }
     }

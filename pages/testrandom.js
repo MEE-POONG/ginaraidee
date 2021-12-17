@@ -49,9 +49,11 @@ export default function Testrandom() {
         <Image src={random.image || '/images/randomnow.png'} alt="" width={200} height={200} />
       </div>
 
-      <div className="m-2">
-        <div>คือ : {random.namemenu}</div>
+      <div className="grid grid-cols-2 gap-2 m-2">
+        <h1 className="text-xl font-bold py-3 text-right ">คือ </h1>
+        <div className="text-xl font-bold py-3 text-left text-yellow-400"> {random.namemenu}</div>
       </div>
+
 
       <button
         type="button"

@@ -1,7 +1,7 @@
 import Nav from "../components/nav";
 import Allmenu from "../components/allmenu";
 
-export default function Addmenulist() {
+export default function Addmenulist({}) {
     return (
         <div>
             <Nav />

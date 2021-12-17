@@ -3,6 +3,7 @@ import React from 'react'
 import { useRouter } from "next/router";
 
 
+
 export function Storelist({ data }) {
     console.log(data);
     const router = useRouter();
@@ -16,11 +17,14 @@ export function Storelist({ data }) {
             {data.map((store) => (
                 <form key={store._id} className="cursor-pointer flex justify-center"
                     type="button"
-                    
                     onClick={() => {
-                        
-                        router.push("/addmenulist");
-                    }}
+
+                        router.push({
+                          
+                            data: store.namestore,
+                          pathname: "/addmenulist"
+                        });
+                      }}
                 >
                     <div className="py-3 bg-yellow-30 border-2 border-gray-400  p-8 rounded-lg w-full outline-none cursor-pointer mb-3 px-3 hover:shadow-lg hover:border-yellow-400 transition delay-150 duration-300 ease-in-out">
                         <div className="text-center">
