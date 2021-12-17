@@ -1,14 +1,13 @@
-import Modalstore from "../components/Modalstore";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { listStoreState } from "../contaxt/liststore";
 import { useSetRecoilState } from "recoil";
 import _ from "lodash";
 import axios from "axios";
-import { listStoreState } from "../contaxt/liststore";
+
 
 const defaultStoreState = [
-  { id: "1", nameStore: "สุ่มอีกรอบ", imageStore: "/images/randomnow.png" },
+  { id: "1", namestore: "สุ่มอีกรอบ" },
 ];
 
 export default function Randomstore() {
@@ -21,13 +20,14 @@ export default function Randomstore() {
 
   const getStoreData = async () => {
     try {
-      const { data } = await axios.get("/api/menu/");
-      setStoreList(data?.data);
+      const { data } = await axios.get('/api/stores')
+      setStoreList(data?.data)
       console.log(data);
     } catch (error) {
       console.log(error);
     }
-  };///เหลือทำ api อย่าลืมมม
+  }
+
 
   const setListStore = useSetRecoilState(listStoreState);
   function randomImg() {
@@ -46,17 +46,8 @@ export default function Randomstore() {
 
   return (
     <div className="text-center my-5 ">
-      <div className="text-gray-800 text-7xl my-4 ">
-        <Image
-          src={random.imageStore || "/images/randomnow.png"}
-          alt=""
-          width={200}
-          height={200}
-        />
-      </div>
-
       <div className="m-2">
-        <div>คือ :{random.nameStore}</div>
+        <div className="text-xl font-bold">คือ ร้าน {random.namestore}</div>
       </div>
 
       <button

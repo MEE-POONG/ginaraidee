@@ -54,7 +54,7 @@ export default function Testrandom() {
       </div>
 
       <div className="m-2">
-        <div>คือ : {random.namemenu}</div>
+        <div>คือ {random.namemenu}</div>
       </div>
 
       <button
