@@ -16,7 +16,6 @@ const people = [
 export default function Foodlist({ data, getUserDataById, deleteUserById }) {
     console.log(data);
     return (
-        <div className="container mx-auto max-w-lg">
             <div className="px-4 flex-auto">
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -89,6 +88,5 @@ export default function Foodlist({ data, getUserDataById, deleteUserById }) {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
