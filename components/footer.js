@@ -21,7 +21,7 @@ export default function Footer() {
             <h5 className="text-xl font-semibold text-gray-700">Contact</h5>
             <nav className="mt-4">
               <ul className="grid lg:grid-cols-2">
-                <li class="mb-2">
+                <li className="mb-2">
                   <a href="#" className="flex space-x-2  font-normal text-base hover:text-gray-400">
                     <div className="item-center">
                       <BsTelephone size={20} />
@@ -48,7 +48,7 @@ export default function Footer() {
             <h5 className="text-xl font-semibold text-gray-700">Follow us</h5>
             <nav className="mt-4">
               <ul className="grid lg:grid-cols-2">
-                <li class="mb-2">
+                <li className="mb-2">
                   <a href="https://www.facebook.com/meepoong/" className="flex space-x-2  font-normal text-base hover:text-gray-400">
                     <div className="item-center">
                       <BsFacebook size={24} />
@@ -59,7 +59,7 @@ export default function Footer() {
                     </span>
                   </a>
                 </li>
-                <li class="mb-2">
+                <li className="mb-2">
                   <a href="https://www.meepoong.com/?fbclid=IwAR2nLLulbiY4PSUEp-Wm70apEKwmMI4lLigq7auZjmL6RRagOoHJPuCBqP0" className="flex space-x-2  font-normal text-base hover:text-gray-400">
                     <div className="item-center">
                       <GiWorld size={24} />
@@ -70,7 +70,7 @@ export default function Footer() {
                     </span>
                   </a>
                 </li>
-                <li class="mb-2">
+                <li className="mb-2">
                   <a href="https://www.tiktok.com/@meepoongfamily?" className="flex space-x-2  font-normal text-base hover:text-gray-400">
                     <div className="item-center">
                       <FaTiktok size={24} />
@@ -81,7 +81,7 @@ export default function Footer() {
                     </span>
                   </a>
                 </li>
-                <li class="mb-2">
+                <li className="mb-2">
                   <a href="https://line.me/th/" className="flex space-x-2  font-normal text-base hover:text-gray-400">
                     <div className="item-center">
                       <BsLine size={24} />

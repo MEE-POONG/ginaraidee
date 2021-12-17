@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Testrandom from "../pages/testrandom";
 import Randomstore from "../pages/randomstore";
-import Modalstore from "./Modalstore";
 
-export default function Modalfood() {
-  const [showModalfood, setShowModal] = React.useState(false);
+export default function Modalstore() {
+  const [showModalstore, setShowModal] = React.useState(false);
 
   const router = useRouter();
 
@@ -17,21 +16,19 @@ export default function Modalfood() {
           className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded ml-4 "
           onClick={() => setShowModal(true)}
         >
-          สุ่มเมนูอาหาร
+          สุ่มร้านอาหาร
         </button>
-        {/* <Modalstore/> */}
       </div>
-      {showModalfood ?(
+      {showModalstore ? (
         <div>
           <div className="border-2 rounded-lg shadow-lg flex flex-col w-11/12  m-auto  bg-gray-100 focus:outline-none">
             {/*body*/}
 
             <div className=" mt-2 justify-center">
               <div className="text-center font-bold text-black text-2xl ">
-                อาหารของคุณในวันนี้
+                ร้านอาหารของคุณในวันนี้
               </div>
-              <Testrandom />
-              {/* <Randomstore/> */}
+              <Randomstore/>
             </div>
           </div>
         </div>
