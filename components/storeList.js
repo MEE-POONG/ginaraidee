@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from 'react'
 import { useRouter } from "next/router";
 
+
 export function Storelist({ data }) {
     console.log(data);
     const router = useRouter();
@@ -15,7 +16,9 @@ export function Storelist({ data }) {
             {data.map((store) => (
                 <form key={store._id} className="cursor-pointer flex justify-center"
                     type="button"
+                    
                     onClick={() => {
+                        
                         router.push("/addmenulist");
                     }}
                 >

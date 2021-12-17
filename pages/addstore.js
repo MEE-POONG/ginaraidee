@@ -20,7 +20,6 @@ export default function Addstore() {
 
     const getStoreData = async () => {
         try {
-
             const { data } = await axios.get('/api/stores')
             setStoreList(data?.data)
             console.log(data);

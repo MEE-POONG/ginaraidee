@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Foodlist from "../components/foodlist";
 
-const initialState = {
+const initialMenuState = {
     namemenu: '',
     staple: '',
     step: '',
@@ -12,7 +12,7 @@ const initialState = {
 
 const defaultMenuState = []
 export default function Addfood() {
-    const [formMenu, setFormMenu] = useState(initialState)
+    const [formMenu, setFormMenu] = useState(initialMenuState)
     const [menuList, setMenuList] = useState(defaultMenuState)
     const [isEdit, setIsEdit] = useState(false)
     const { namemenu, staple, step, } = formMenu
@@ -26,7 +26,6 @@ export default function Addfood() {
 
             const { data } = await axios.get('/api/menu/')
             setMenuList(data?.data)
-            console.log(data);
         } catch (error) {
             console.log(error);
         }

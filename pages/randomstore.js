@@ -1,33 +1,32 @@
+/* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { listStoreState } from "../contaxt/liststore";
 import { useSetRecoilState } from "recoil";
+import { listStoreState } from "../contaxt/liststore";
 import _ from "lodash";
 import axios from "axios";
 
-
 const defaultStoreState = [
-  { id: "1", namestore: "สุ่มอีกรอบ" },
-];
-
-export default function Randomstore() {
-  const [storeList, setStoreList] = useState(defaultStoreState);
+  { id: "1", name: "สุ่มอีกรอบ", image: "/images/randomnow.png" }
+]
+export default function Testrandom() {
+  const [storeList, setStoreList] = useState(defaultStoreState)
   const [random, setRandom] = useState(storeList[0]);
 
   useEffect(() => {
-    getStoreData();
-  }, []);
+    getStoreData()
+  }, [])
 
   const getStoreData = async () => {
     try {
-      const { data } = await axios.get('/api/stores')
+
+      const { data } = await axios.get('/api/stores/')
       setStoreList(data?.data)
       console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
-
 
   const setListStore = useSetRecoilState(listStoreState);
   function randomImg() {
@@ -40,14 +39,15 @@ export default function Randomstore() {
   }
   useEffect(() => {
     randomImg();
-  });
+  }, []);
 
   const router = useRouter();
-
   return (
     <div className="text-center my-5 ">
-      <div className="m-2">
-        <div className="text-xl font-bold">คือ ร้าน {random.namestore}</div>
+      
+      <div className="grid grid-cols-2 gap-2 m-2">
+        <h1 className="text-xl font-bold py-3 text-right ">คือ ร้าน</h1>
+        <div className="text-xl font-bold py-3 text-left text-yellow-400"> {random.namestore}</div>
       </div>
 
       <button
@@ -61,9 +61,9 @@ export default function Randomstore() {
         className="  px-8 mx-2 text-center text-white h-12 duration-150 font-semibold bg-yellow-300 border border-gray-300 hover:shadow-lg hover:bg-yellow-400 rounded-lg focus:shadow-outline "
         type="button"
         onClick={() => {
-          setListStore(random);
+          setListStore(random)
           router.push({
-            pathname: "/choose",
+            pathname: "/bistro"
           });
         }}
       >
