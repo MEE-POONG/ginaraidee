@@ -45,9 +45,9 @@ export default function Testrandom() {
   const router = useRouter();
   return (
     <div className="text-center my-5 ">
-      <div className="text-gray-800 text-7xl my-4 ">
+      {/* <div className="text-gray-800 text-7xl my-4 ">
         <Image src={random.image || '/images/randomnow.png'} alt="" width={200} height={200} />
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-2 gap-2 m-2">
         <h1 className="text-xl font-bold py-3 text-right ">คือ </h1>
@@ -58,12 +58,12 @@ export default function Testrandom() {
       <button
         type="button"
         onClick={() => randomImg()}
-        className=" px-6 mx-2 text-center text-white h-12 duration-150 font-semibold bg-yellow-300 border border-gray-300 hover:shadow-lg hover:bg-yellow-400 rounded-lg focus:shadow-outline "
+        className="mb-2 md:mb-0 bg-yellow-400 border border-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-yellow-300"
       >
         สุ่มอีกครั้ง
       </button>
       <button
-        className="  px-8 mx-2 text-center text-white h-12 duration-150 font-semibold bg-yellow-300 border border-gray-300 hover:shadow-lg hover:bg-yellow-400 rounded-lg focus:shadow-outline "
+        className="mx-2 mb-2 md:mb-0 bg-yellow-400 border border-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-yellow-300"
         type="button"
         onClick={() => {
           setListMenu(random)

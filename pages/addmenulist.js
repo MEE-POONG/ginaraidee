@@ -2,14 +2,14 @@ import Nav from "../components/nav";
 import Allmenu from "../components/allmenu";
 
 
-export default function Addmenulist({listStoreState}) {
+export default function Addmenulist({}) {
     return (
         <div>
             <Nav />
             <div className="container mx-auto max-w-lg py-5">
                 <div className="px-4 flex-auto">
                     <div className="text-center">
-                        <h1 className="text-2xl bg-shadow font-bold py-5">ร้าน {listStore.namestore}</h1>
+                        <h1 className="text-2xl bg-shadow font-bold py-5">ร้าน </h1>
                         <h1 className="text-2xl bg-shadow font-bold py-5">เพิ่มเมนูอาหาร</h1>
                     </div>
                     <form className="w-full max-w-lg py-5" >

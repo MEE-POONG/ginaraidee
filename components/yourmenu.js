@@ -13,12 +13,13 @@ export default function Yourmenu() {
         </div>
       </div>
       <div className="  text-center place-content-center">
-      <div className="grid grid-cols-1">
-        <div> <Modalfood /></div>
+        <div className="grid grid-cols-1">
+          <div> <Modalfood /></div>
+        </div>
+        <div className="grid grid-cols-1">
+          <div> <Modalstore /></div>
+        </div>
       </div>
-      <div className="grid grid-cols-1">
-        <div> <Modalstore /></div>
-      </div></div>
     </div>
   );
 }

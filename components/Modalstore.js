@@ -20,18 +20,18 @@ export default function Modalstore() {
         </button>
       </div>
       {showModalstore ? (
-        <div>
-          <div className="border-2 rounded-lg shadow-lg flex flex-col w-11/12  m-auto  bg-gray-100 focus:outline-none">
-            {/*body*/}
+         <div>
+         <div className="border-2 rounded-lg shadow-lg flex flex-col w-11/12  m-auto bg-no-repeat focus:outline-none">
+           {/*body*/}
 
-            <div className="py-5 mt-2 justify-center">
-              <div className="text-center font-bold text-black text-2xl ">
-                ร้านอาหารของคุณในวันนี้
-              </div>
-              <Randomstore/>
-            </div>
-          </div>
-        </div>
+           <div className="py-5 mt-2 justify-center">
+             <div className="text-center font-bold text-black text-2xl ">
+               อาหารของคุณในวันนี้
+             </div>
+             <Randomstore/>
+           </div>
+         </div>
+       </div>
       ) : null}{" "}
     </div>
   );
