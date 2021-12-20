@@ -1,8 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 
-export default function Listbistro({ data, listStore }) {
-    console.log(data);
+export default function Listbistro({ listStore }) {
     return (
         <div>
              <div className="text-center py-5">

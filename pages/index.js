@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <Yourmenu />
       {/* <Testrandom/> */}
-      <Popular />
+      {/* <Popular /> */}
       <Footer />
     </div>
   );

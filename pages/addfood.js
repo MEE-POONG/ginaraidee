@@ -171,12 +171,6 @@ export default function Addfood() {
 
                             />
                         </div>
-                        {/* <div className="w-full">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xl mb-2" htmlFor="grid-first-name">
-                                ภาพอาหาร
-                            </label>
-                            <input className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="file" />
-                        </div> */}
                         <div className="text-center py-4">
                             <button
                                 className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded"

@@ -18,11 +18,8 @@ export function Storelist({ data }) {
                 <form key={store._id} className="cursor-pointer flex justify-center"
                     type="button"
                     onClick={() => {
-
                         router.push({
-                          
-                            data: store.namestore,
-                          pathname: "/addmenulist"
+                          pathname: '/addmenulist/' + store._id
                         });
                       }}
                 >
