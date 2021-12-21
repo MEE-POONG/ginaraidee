@@ -35,7 +35,7 @@ export default function Login() {
         <>
         <div>
         <Navbar />
-        <div className="container mx-auto max-w-lg py-10">
+        <div className="container mx-auto max-w-lg py-10 ">
             <div className="px-4 flex-auto">
 
                 <div className="py-5 block grid">
