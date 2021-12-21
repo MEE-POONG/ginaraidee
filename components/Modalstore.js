@@ -1,37 +1,65 @@
 import React, { useState } from "react";
 // import Image from "next/image";
-import { useRouter } from "next/router";
-import Testrandom from "../pages/testrandom";
 import Randomstore from "../pages/randomstore";
+import Image from "next/image";
+import { MdOutlineCancel } from "react-icons/md";
 
 export default function Modalstore() {
   const [showModalstore, setShowModal] = React.useState(false);
 
-  const router = useRouter();
 
   return (
-    <div className="container">
-      <div className="text-center py-5">
-        <button
-          className="bg-yellow-300 hover:shadow-lg text-white font-bold py-2 px-4 rounded ml-4 "
+    <div className="py-10 justify-center items-center flex">
+      <div className="border-0 rounded-lg shadow-lg w-64 h-64 cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
+        <div
+          className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5 "
+          type="button"
           onClick={() => setShowModal(true)}
         >
-          สุ่มร้านอาหาร
-        </button>
+          <Image className="text-center w-full h-full object-center  lg:w-full  rounded-lg"
+            src="/images/store.webp"
+            alt=""
+            width={200}
+            height={180}
+            type="button"
+          />
+        </div>
       </div>
       {showModalstore ? (
-         <div>
-         <div className="border-2 rounded-lg shadow-lg flex flex-col w-11/12  m-auto bg-no-repeat focus:outline-none">
-           {/*body*/}
-
-           <div className="py-5 mt-2 justify-center">
-             <div className="text-center font-bold text-black text-2xl ">
-               อาหารของคุณในวันนี้
-             </div>
-             <Randomstore/>
-           </div>
-         </div>
-       </div>
+         <div className="px-5 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  shadow-lg backdrop-blur">
+          <div className="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+            <div className="">
+            <div
+              className=""
+              type="button"
+              onClick={() => setShowModal(false)}
+            >
+              <MdOutlineCancel size={24} className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
+            </div>
+              <div className="text-center p-5 flex-auto justify-center">
+                <h2 className="text-xl font-bold ">ร้านอาหารของคุณคือ</h2>
+                <Randomstore className="text-center "/>
+              </div>
+            </div>
+          </div>
+        </div>
+        // <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  shadow-lg bg-blue-300 backdrop-blur">
+        //   <div className="md:w-auto border-0 rounded-lg shadow-lg  flex flex-col w-11/12  bg-white m-5 focus:outline-none px-5 py-5 ">
+        //     <div
+        //       className=""
+        //       type="button"
+        //       onClick={() => setShowModal(false)}
+        //     >
+        //       <MdOutlineCancel size={24} className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
+        //     </div>
+        //     <div className="relative mt-8 justify-center">
+        //       <div className="text-center font-bold text-2xl ">
+        //         ร้านอาหารของคุณคือ
+        //       </div>
+        //       <Randomstore />
+        //     </div>
+        //   </div>
+        // </div>
       ) : null}{" "}
     </div>
   );

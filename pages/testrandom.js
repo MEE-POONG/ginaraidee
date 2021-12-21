@@ -44,17 +44,20 @@ export default function Testrandom() {
 
   const router = useRouter();
   return (
-    <div className="text-center my-5 ">
-      {/* <div className="text-gray-800 text-7xl my-4 ">
+    <div className="">
+      <h2 className="text-xl font-bold py-3">คือ</h2>
+      <div className="text-gray-800 text-7xl my-4 ">
         <Image src={random.image || '/images/randomnow.png'} alt="" width={200} height={200} />
-      </div> */}
-
-      <div className="grid grid-cols-2 gap-2 m-2">
-        <h1 className="text-xl font-bold py-3 text-right ">คือ </h1>
-        <div className="text-xl font-bold py-3 text-left text-yellow-400"> {random.namemenu}</div>
       </div>
+      <div className="text-center p-5 flex-auto justify-center">
 
-
+        <h2 className="text-2xl font-bold py-3 text-yellow-400 "> {random.namemenu}</h2>
+      </div>
+      {/* <div className="">
+        <h1 className="text-xl font-bold py-3 self-center">คือ</h1>
+        <div className="text-2xl font-bold py-3 text-yellow-400"> {random.namemenu}</div>
+      </div>
+      */}
       <button
         type="button"
         onClick={() => randomImg()}
