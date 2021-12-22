@@ -12,7 +12,7 @@ const defaultStoreState = [
 export default function Testrandom() {
   const [storeList, setStoreList] = useState(defaultStoreState)
   const [random, setRandom] = useState(storeList[0]);
-
+  const setListStore = useSetRecoilState(listStoreState);
   useEffect(() => {
     getStoreData()
   }, [])
@@ -28,7 +28,7 @@ export default function Testrandom() {
     }
   }
 
-  const setListStore = useSetRecoilState(listStoreState);
+
   function randomImg() {
     let ran = setInterval(() => {
       setRandom(_.shuffle(storeList)[0]);

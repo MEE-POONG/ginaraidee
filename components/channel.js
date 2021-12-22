@@ -2,9 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export function Channel({ listMenu }) {
+export function Channel() {
   const router = useRouter();
-  console.log(listMenu);
   return (
     <div className="container mx-auto max-w-lg">
       <div className="px-4 flex-auto">

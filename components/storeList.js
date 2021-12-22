@@ -15,7 +15,7 @@ export function Storelist({ data }) {
                 </h1>
             </div>
             {data.map((store) => (
-                <form key={store._id} className="cursor-pointer flex justify-center"
+                <form key={store} className="cursor-pointer flex justify-center"
                     type="button"
                     onClick={() => {
                         router.push({

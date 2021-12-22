@@ -30,6 +30,7 @@ export default function Testrandom() {
   }
 
   const setListMenu = useSetRecoilState(listMenuState);
+
   function randomImg() {
     let ran = setInterval(() => {
       setRandom(_.shuffle(menuList)[0]);

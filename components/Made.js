@@ -17,10 +17,6 @@ export default function Made({ data, listMenu }) {
                 <div className="font-bold text-center text-2xl">
                   {listMenu.namemenu}
                 </div>
-                
-                {/* <div className="text-center py-2 ">
-                  <Image src={listMenu.image} alt="" width={200} height={200} className="rounded-lg "/>
-                </div> */}
 
                 <p className=" text-center text-lg m-2">วัตถุดิบและวิธีการทำ</p>
                 <div className="grid grid-cols-2 gap-1 ">

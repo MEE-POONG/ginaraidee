@@ -61,7 +61,7 @@ export default function Addfood() {
         }
     }
 
-    const getUserDataById = async (id) => {
+    const getFoodsDataById = async (id) => {
         try {
             const { data } = await axios.get('/api/menu/' + id)
             setIsEdit(true)
@@ -94,7 +94,7 @@ export default function Addfood() {
         }
     }
     
-    const deleteUserById = async (id) => {
+    const deleteFoodsById = async (id) => {
         try {
             await Swal.fire({
                 icon: 'info',
@@ -183,7 +183,7 @@ export default function Addfood() {
                     </form>
                 </div>
             </div>
-            <Foodlist data={menuList} getUserDataById={getUserDataById} deleteUserById={deleteUserById}/>
+            <Foodlist data={menuList} getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById}/>
           
         </div>
     );

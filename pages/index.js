@@ -9,8 +9,8 @@ export default function Home() {
     <div>
       <Navbar />
       <Yourmenu />
-      {/* <Testrandom/> */}
-      {/* <Popular /> */}
+      
+      <Popular />
       <Footer />
     </div>
   );
