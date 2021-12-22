@@ -1,3 +1,4 @@
+import Modaldrink from "./Modaldrink";
 import Modalfood from "./modalfood";
 import Modalstore from "./Modalstore";
 
@@ -15,6 +16,9 @@ export default function Yourmenu() {
       <div className="  text-center place-content-center">
         <div className="grid grid-cols-1">
           <div> <Modalfood /></div>
+        </div>
+        <div className="grid grid-cols-1">
+          <div> <Modaldrink /></div>
         </div>
         <div className="grid grid-cols-1">
           <div> <Modalstore /></div>

@@ -26,7 +26,7 @@ export default function Modalstore() {
         </div>
       </div>
       {showModalstore ? (
-         <div className="px-5 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  shadow-lg backdrop-blur">
+         <div className="px-5 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  shadow-lg backdrop-filter backdrop-blur-md ">
           <div className="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
             <div className="">
             <div
@@ -37,7 +37,7 @@ export default function Modalstore() {
               <MdOutlineCancel size={24} className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
             </div>
               <div className="text-center p-5 flex-auto justify-center">
-                <h2 className="text-xl font-bold ">ร้านอาหารของคุณคือ</h2>
+                <h2 className="text-2xl font-bold ">ร้านอาหารของคุณคือ</h2>
                 <Randomstore className="text-center "/>
               </div>
             </div>

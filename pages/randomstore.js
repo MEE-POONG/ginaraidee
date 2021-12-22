@@ -44,14 +44,11 @@ export default function Testrandom() {
   const router = useRouter();
   return (
     <div className="">
-      <div className="text-center p-5 flex-auto justify-center">
-        <h2 className="text-xl font-bold ">ร้าน</h2>
-        <h2 className="text-2xl font-bold py-4 text-yellow-400 ">{random.namestore}</h2>
+      
+      <div className="grid grid-cols-4 gap-4 m-2">
+        <h1 className="text-2xl col-span-1 font-bold py-3 ">ร้าน</h1>
+        <h1 className="text-2xl col-span-3 px-5 font-bold py-3 text-left text-yellow-400 col-span-2"> {random.namestore}</h1>
       </div>
-      {/* <div className="grid grid-cols-3 gap-3 m-2">
-        <h1 className="text-xl col-span-1 font-bold py-3 self-center col-span-2">ร้าน</h1>
-        <div className="text-2xl col-span-2 px-5 font-bold py-3 text-left text-yellow-400 col-span-2"> {random.namestore}</div>
-      </div> */}
 
       <button
         type="button"
