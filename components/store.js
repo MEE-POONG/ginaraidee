@@ -15,7 +15,14 @@ export function Store({ data }) {
                 </h1>
             </div>
             {data.map((store) => (
-                <form key={store._id} className="cursor-pointer flex justify-center">
+                <form key={store} className="cursor-pointer flex justify-center"
+                    type="button"
+                    onClick={() => {
+                        router.push({
+                          pathname: '/menuall/' + store._id
+                        });
+                      }}
+                >
                     <div className="py-3 bg-yellow-30 border-2 border-gray-400  p-8 rounded-lg w-full outline-none cursor-pointer mb-3 px-3 hover:shadow-lg hover:border-yellow-400 transition delay-150 duration-300 ease-in-out">
                         <div className="text-center">
                             <Image

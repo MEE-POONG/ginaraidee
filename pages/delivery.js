@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
-import { Store } from "../components/store";
-
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import axios from "axios";
+import {Store} from "../components/store"
 const initialState = {
-	namestore: '',
+    namestore: '',
 }
 
 const defaultStoreState = []
 export default function Delivery() {
-	const [storeList, setStoreList] = useState(defaultStoreState)
+    const [formStore, setFormStore] = useState(initialState)
+    const [storeList, setStoreList] = useState(defaultStoreState)
+    const { name, } = formStore
 
-	useEffect(() => {
-		getStoreData()
-	}, [])
+    useEffect(() => {
+        getStoreData()
+    }, [])
 
-	const getStoreData = async () => {
-		try {
-			const { data } = await axios.get('/api/stores')
-			setStoreList(data?.data)
-			console.log(data);
-		} catch (error) {
-			console.log(error);
-		}
-	}
+    const getStoreData = async () => {
+        try {
+            const { data } = await axios.get('/api/stores')
+            setStoreList(data?.data)
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 	return (
 		<div>

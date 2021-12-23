@@ -45,7 +45,7 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                     {data.map((menu) => (
                       <tr key={menu._id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                          {menu.namemenu}
+                          {menu.name}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {menu.staple}

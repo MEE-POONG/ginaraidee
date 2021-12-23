@@ -3,7 +3,7 @@
 import mongoose from 'mongoose'
 
 const AddMenuSchema = new mongoose.Schema({
-    name: String,
+    namemenu: String,
     staple: String,
     step: String,
     img: String,

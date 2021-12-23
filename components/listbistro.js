@@ -23,8 +23,8 @@ export default function Listbistro({ listStore }) {
                             height={90}
                         />
                     </div>
-                    <h1 className="text-center text-lg text-gray-900 font-bold">กระเพราหมูกรอบ</h1>
-                    <h1 className="text-center text-lg text-gray-900 font-bold">50</h1>
+                    <h1 className="text-center text-lg text-gray-900 font-bold">{listStore.namemenu}</h1>
+                    <h1 className="text-center text-lg text-gray-900 font-bold">{listStore.price}</h1>
                 </div>
             </div>
         </div>

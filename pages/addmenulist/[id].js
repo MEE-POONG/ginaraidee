@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const defaultFormMenu = { name: "", price: "", storeId: "" };
-export default function Addmenulist({}) {
+export default function Addmenulist({ }) {
   const router = useRouter();
   console.log(router.query.id);
 
@@ -23,15 +23,15 @@ export default function Addmenulist({}) {
 
   const getMenuData = async () => {
     try {
-        if (router.query.id){
-      const { data } = await axios.get("/api/menubystore/" + router.query.id);
-      setMenuList(data?.data);
-      console.log(data);
-        }
+      if (router.query.id) {
+        const { data } = await axios.get("/api/menubystore/" + router.query.id);
+        setMenuList(data?.data);
+        console.log(data);
+      }
     } catch (error) {
       console.log(error);
     }
-        
+
   };
 
   const handelSubmit = async (e) => {
@@ -82,6 +82,36 @@ export default function Addmenulist({}) {
       console.log(error);
     }
   };
+
+
+  const deleteFoodsById = async (id) => {
+    try {
+      await Swal.fire({
+        icon: 'info',
+        title: 'คุณต้องการลบข้อมูลนี้หรือไม่',
+        confirmButtonText: 'ต้องการ',
+        cancelButtonText: 'ไม่ต้องการ',
+        showCancelButton: true,
+      }).then(async e => {
+        if (e.isConfirmed) {
+          await axios.delete('/api/menu/' + id)
+          await Swal.fire({
+            icon: 'success',
+            title: 'ลบข้อมูลเรียบร้อยแล้ว',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          getMenuData()
+        }
+      })
+    } catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'ลบข้อมูลไม่สำเร็จ',
+      })
+    }
+  }
+
   if (!store) return <div>loading...</div>;
   return (
     <div>
@@ -134,7 +164,7 @@ export default function Addmenulist({}) {
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList}/>
+      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById}/>
     </div>
   );
 }

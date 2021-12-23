@@ -5,7 +5,7 @@ import axios from "axios";
 import Foodlist from "../components/foodlist";
 
 const initialState = {
-    namemenu: '',
+    name: '',
     staple: '',
     step: '',
 }
@@ -15,7 +15,7 @@ export default function Addfood() {
     const [formMenu, setFormMenu] = useState(initialState)
     const [menuList, setMenuList] = useState(defaultMenuState)
     const [isEdit, setIsEdit] = useState(false)
-    const { namemenu, staple, step, } = formMenu
+    const { name, staple, step, } = formMenu
 
     useEffect(() => {
         getMenuData()
@@ -53,7 +53,7 @@ export default function Addfood() {
     
 
     const validationMenu = () => {
-        if ( !namemenu || !staple || !step ) {
+        if ( !name || !staple || !step ) {
             return Swal.fire({
                 icon: 'error',
                 title: 'กรอกข้อมูลไม่ครบไอ้เหี้ยเจมส์'
@@ -67,7 +67,7 @@ export default function Addfood() {
             setIsEdit(true)
             setFormMenu({
                 _id: data.data._id,
-                namemenu: data.data.namemenu,
+                name: data.data.name,
                 staple: data.data.staple,
                 step: data.data.step,
                
@@ -138,11 +138,11 @@ export default function Addfood() {
                                 ชื่อเมนู
                             </label>
                             <input
-                                onChange={e => setFormMenu({ ...formMenu, namemenu: e.target.value })}
+                                onChange={e => setFormMenu({ ...formMenu, name: e.target.value })}
+                                value={name}
                                 className="appearance-none block w-full bg-gray-50 text-gray-700 border border-yellow-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                id="namemenu"
+                                id="name"
                                 type="text"
-                                value={namemenu}
                             />
                         </div>
                         <div className="w-full">
