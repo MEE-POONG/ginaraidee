@@ -8,7 +8,7 @@ import {listMenuState} from "../contaxt/listmenu"
 
 
 const initialState = {
-    namemenu: '',
+    name: '',
     staple: '',
     step: '',
 }
