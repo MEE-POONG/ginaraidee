@@ -62,7 +62,7 @@ export default function Addmenulist({ }) {
 
   const setDataMenu = async () => {
     try {
-      await axios.post("/api/menu", { ...formMenu, storeId: router.query.id });
+      await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
     } catch (error) {
       return Swal.fire({
         icon: "error",
