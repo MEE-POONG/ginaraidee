@@ -17,7 +17,7 @@ export default function Addfood() {
   const [menuList, setMenuList] = useState(defaultMenuState);
   //  const [upImg, setUpImg] = useState(initialState)
   const [isEdit, setIsEdit] = useState(false);
-  const { name, staple, step, img: image } = formMenu;
+  const { name, staple, step,img } = formMenu;
 
   useEffect(() => {
     getMenuData();
@@ -54,7 +54,7 @@ export default function Addfood() {
   };
 
   const validationMenu = () => {
-    if (!name || !staple || !step || !image) {
+    if (!name || !staple || !step || !img) {
       return Swal.fire({
         icon: "error",
         title: "กรุณากรอกข้อมูลไม่ครบ"
@@ -71,7 +71,7 @@ export default function Addfood() {
         name: data.data.name,
         staple: data.data.staple,
         step: data.data.step,
-        img: data.data.image,
+        // img: data.data.img,
       });
     } catch (error) {
       console.log(error);
@@ -194,7 +194,7 @@ export default function Addfood() {
                 onChange={(e) =>
                   setFormMenu({ ...formMenu, img: e.target.value })
                 }
-                value={image}
+                value={img}
                 id="image"
               />
             </div>

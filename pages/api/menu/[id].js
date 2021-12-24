@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/dbConnect'
-import Menu from '../../../models/Menu'
+import Foods from '../../../models/Foods'
 
 
 export default async function handler(req, res) {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const menus = await Menu.findById(req.query.id)
+                const menus = await Foods.findById(req.query.id)
                 res.status(200).json({ success: true, data: menus })
             } catch (error) {
                 res.status(400).json({ success: false })
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                const menus = await Menu.findByIdAndUpdate(req.query.id, req.body, { upsert: true });
+                const menus = await Foods.findByIdAndUpdate(req.query.id, req.body, { upsert: true });
                 res.status(200).json({ success: true, data: menus })
             } catch (error) {
                 res.status(400).json({ success: false })
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             break
         case 'DELETE':
             try {
-                const menus = await Menu.findOneAndRemove(req.query.id);
+                const menus = await Foods.findOneAndRemove(req.query.id);
                 res.status(200).json({ success: true, data: menus })
             } catch (error) {
                 res.status(400).json({ success: false })

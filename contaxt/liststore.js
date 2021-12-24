@@ -9,6 +9,7 @@ const listStoreState = atom({
   default: {
     id: "",
     nameStore: "",
+    
   },
   effects_UNSTABLE: [persistAtom],
 });

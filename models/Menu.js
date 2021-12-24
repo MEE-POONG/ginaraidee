@@ -3,10 +3,7 @@
 import mongoose from 'mongoose'
 
 const AddMenuSchema = new mongoose.Schema({
-    namemenu: String,
-    staple: String,
-    step: String,
-    img: String,
+    name: String,
     storeId: mongoose.Types.ObjectId,
     price: Number,
 })
