@@ -53,7 +53,7 @@ export default function Testrandom() {
       
       <div className="grid grid-cols-4 gap-4 m-2">
         <h1 className="text-2xl col-span-1 font-bold py-3 ">คือ</h1>
-        <h1 className="text-2xl col-span-3 px-5 font-bold py-3 text-left text-yellow-400 col-span-2">  {random.name}</h1>
+        <h1 className="text-2xl px-5 font-bold py-3 text-left text-yellow-400 col-span-2">  {random.name}</h1>
       </div>
      
       <button

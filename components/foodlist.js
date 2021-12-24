@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
   return (
     <div className="container mx-auto max-w-lg">
