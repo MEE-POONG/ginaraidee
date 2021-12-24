@@ -14,30 +14,29 @@ export default function Allmenu({ menuList, deleteFoodsById }) {
                 </h1>
             </div>
             {menuList?.map((menu) => (
-                <div className="flex items-center justify-center px-3 py-3" key={menu._id} >
+                <div className="flex items-center justify-center px-3 py-1" key={menu._id} >
                     <div
-                        className="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500 w-full h-48">
+                        className="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500 w-full h-16">
                         <div className="p-3 text-center">
                             <div
                                 className=""
                                 type="button"
                                 onClick={() => deleteFoodsById(menu._id)}
                             >
-                                <RiDeleteBin5Line size={20} color="#facc15" className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
+                                <RiDeleteBin5Line size={20} color="#facc15" className="ml-2 float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
                             </div>
                             <div type="button"
                                 onClick={() => setShowModal(true)} >
                                 <FiEdit size={20} color="#dc2626" className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
                             </div>
-                            <Image
+                            {/* <Image
                                 src="/images/delivery.png"
                                 alt=""
                                 width={100}
                                 height={90}
-                            />
+                            /> */}
                         </div>
-                        <h1 className="text-center text-lg text-gray-900 font-bold">{menu.name}</h1>
-                        <h1 className="text-center text-lg text-gray-900 font-bold">{menu.price}</h1>
+                        <h1 className="text-center text-lg text-gray-900 font-bold">{menu.name}  {menu.price} บาท</h1>
                     </div>
                 </div>
             ))}
