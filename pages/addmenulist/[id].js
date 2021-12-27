@@ -12,6 +12,7 @@ export default function Addmenulist({ }) {
 
   const [store, setStore] = useState();
   const [formMenu, setFormMenu] = useState(defaultFormMenu);
+  const [isEdit, setIsEdit] = useState(false);
   const [menuList, setMenuList] = useState();
   console.log(menuList);
 
@@ -40,7 +41,6 @@ export default function Addmenulist({ }) {
     if (validationError) return;
     const setDataError = await setDataMenu();
     if (setDataError) return;
-    console.log();
     setFormMenu(defaultFormMenu);
     await Swal.fire({
       icon: "success",
@@ -60,14 +60,19 @@ export default function Addmenulist({ }) {
     }
   };
 
-  const setDataMenu = async () => {
+   const setDataMenu = async () => {
     try {
-      await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+      if (isEdit) {
+        await axios.put("/api/food/" + formMenu._id, formMenu);
+      } else {
+        await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+      }
     } catch (error) {
-      return Swal.fire({
+      Swal.fire({
         icon: "error",
         title: "เพิ่มข้อมูลไม่สำเร็จ",
       });
+      return true;
     }
   };
 
@@ -83,6 +88,22 @@ export default function Addmenulist({ }) {
     }
   };
 
+  const getFoodsDataById = async (id) => {
+    try {
+      const { data } = await axios.get("/api/food/" + id);
+      setIsEdit(true);
+      setFormMenu({
+        _id: data.data._id,
+        name: data.data.name,
+        price: data.data.price,
+        storeId: data.data.storeId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+ 
 
   const deleteFoodsById = async (id) => {
     try {
@@ -94,7 +115,7 @@ export default function Addmenulist({ }) {
         showCancelButton: true,
       }).then(async e => {
         if (e.isConfirmed) {
-          await axios.delete('/api/menu/' + id)
+          await axios.delete('/api/food/' + id)
           await Swal.fire({
             icon: 'success',
             title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -164,7 +185,7 @@ export default function Addmenulist({ }) {
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById}/>
+      <Allmenu menuList={menuList}  getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById}/>
     </div>
   );
 }
