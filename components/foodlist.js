@@ -1,8 +1,11 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 
 export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
+  console.log(data);
+  
   return (
+    
     <div className="container mx-auto max-w-lg">
       <div className="px-4 flex-auto">
         <div className="flex flex-col">
@@ -38,7 +41,7 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
                         จัดการ
                       </th>
@@ -47,6 +50,7 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {data.map((menu) => (
                       <tr key={menu._id}>
+                        
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {menu.name}
                         </td>
@@ -56,16 +60,17 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {menu.step}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                          {menu.img}
-                        </td>
                         {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {menu.img}
+                        </td> */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                     <Image
-                                                        src={`/uploads/` + menu.img}
+                                                        src={`http://upload-image.gin-a-rai-dee.daddybody.company/` + menu.img}
                                                         alt=""
-                                                        width={50} height={50}
+                                                        width={200} height={200}
                                                     />
-                                                </td>  */}
+                                                </td> 
+                                               
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <a
                             onClick={() => getFoodsDataById(menu._id)}
@@ -75,16 +80,22 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                             Edit
                           </a>
                           <a
-                            onClick={() => deleteFoodsById(menu._id)}
+                            onClick={() => deleteFoodsById(menu._id)
+                            }
                             href="#"
                             className="ml-2 text-red-600 hover:text-red-900"
+                            
                           >
-                            Delete
+                            Delete {menu._id}
+                            
                           </a>
                         </td>
                       </tr>
+                      
                     ))}
+                    
                   </tbody>
+                  
                 </table>
               </div>
             </div>

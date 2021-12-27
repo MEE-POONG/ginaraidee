@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Foodlist from "../components/foodlist";
+import { data } from "autoprefixer";
 
 const initialState = {
   name: "",
@@ -17,7 +18,8 @@ export default function Addfood() {
   const [menuList, setMenuList] = useState(defaultMenuState);
   //  const [upImg, setUpImg] = useState(initialState)
   const [isEdit, setIsEdit] = useState(false);
-  const { name, staple, step,img } = formMenu;
+  const { name, staple, step } = formMenu;
+  const [imgFile, setImgFile] = useState();
 
   useEffect(() => {
     getMenuData();
@@ -27,10 +29,15 @@ export default function Addfood() {
     try {
       const { data } = await axios.get("/api/menu/");
       setMenuList(data?.data);
-      // setUpImg(data?.data)
+      // setImgFile(data?.data)
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handelSubmitFile = async (event) => {
+    const file = event.target.files[0];
+    setImgFile(file);
   };
 
   const handelSubmit = async (e) => {
@@ -38,7 +45,7 @@ export default function Addfood() {
     const validationError = validationMenu();
     if (validationError) return;
 
-    const setDataError = await setDataMenu();
+    const setDataError = await uploadImage(imgFile);
     if (setDataError) return;
 
     setFormMenu(initialState);
@@ -54,10 +61,10 @@ export default function Addfood() {
   };
 
   const validationMenu = () => {
-    if (!name || !staple || !step || !img) {
+    if (!name || !staple || !step) {
       return Swal.fire({
         icon: "error",
-        title: "กรุณากรอกข้อมูลไม่ครบ"
+        title: "กรุณากรอกข้อมูลไม่ครบ",
       });
     }
   };
@@ -71,19 +78,45 @@ export default function Addfood() {
         name: data.data.name,
         staple: data.data.staple,
         step: data.data.step,
-        // img: data.data.img,
+        // img: data.data.name,
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const setDataMenu = async () => {
+  const uploadImage = async (img) => {
+    try {
+      let menuData;
+      menuData = { ...formMenu };
+
+      if (img) {
+        let formData = new FormData();
+        formData.append("file", img, img.name);
+        const { data } = await axios.post(
+          "http://upload-image.gin-a-rai-dee.daddybody.company/upload/",
+          formData
+        );
+        console.log(data?.filename);
+        menuData.img = data?.filename || formMenu?.img;
+      }
+
+      setImgFile(""); //
+
+      console.log(menuData);
+
+      const setDataError = await setDataMenu(menuData);
+      if (setDataError) return;
+    } catch (error) {
+      return true;
+    }
+  };
+  const setDataMenu = async (data) => {
     try {
       if (isEdit) {
-        await axios.put("/api/menu/" + formMenu._id, formMenu);
+        await axios.put("/api/menu/" + formMenu._id, data);
       } else {
-        await axios.post("/api/menu/", formMenu);
+        await axios.post("/api/menu/", data);
       }
     } catch (error) {
       Swal.fire({
@@ -122,6 +155,7 @@ export default function Addfood() {
       });
     }
   };
+  console.log(data);
 
   return (
     <div>
@@ -191,11 +225,9 @@ export default function Addfood() {
               <input
                 className="py-1"
                 type="file"
-                onChange={(e) =>
-                  setFormMenu({ ...formMenu, img: e.target.value })
-                }
-                value={img}
-                id="image"
+                onChange={handelSubmitFile}
+                id="img"
+                name="img"
               />
             </div>
 
