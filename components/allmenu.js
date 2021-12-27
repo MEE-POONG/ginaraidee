@@ -14,8 +14,8 @@ export default function Allmenu({ menuList, getFoodsDataById, deleteFoodsById })
                 <div className="flex items-center justify-center px-3 py-1" key={menu._id} >
                     <div className="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500 w-full h-16">
                         <div class="grid grid-cols-12">
-                            <h1 className="mt-4 px-5 text-yellow-400 text-left text-lg col-span-5 text-gray-900 font-bold">{menu.name}</h1>
-                            <h1 className="mt-4 px-5 text-yellow-400 text-right text-lg col-span-4 text-gray-900 font-bold">{menu.price} บาท</h1>
+                            <h1 className="mt-4 px-5 text-left text-lg col-span-5 text-gray-900 font-bold">{menu.name}</h1>
+                            <h1 className="mt-4 px-5 text-right text-lg col-span-4 text-gray-900 font-bold">{menu.price} บาท</h1>
                             <div className="col-span-3 mt-2 p-3 text-center">
                                 <div type="button">
                                     <a

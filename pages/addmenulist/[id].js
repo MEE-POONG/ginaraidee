@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { HiOutlineSaveAs } from "react-icons/hi";
 
 const defaultFormMenu = { name: "", price: "", storeId: "" };
 export default function Addmenulist({ }) {
@@ -60,7 +61,7 @@ export default function Addmenulist({ }) {
     }
   };
 
-   const setDataMenu = async () => {
+  const setDataMenu = async () => {
     try {
       if (isEdit) {
         await axios.put("/api/food/" + formMenu._id, formMenu);
@@ -103,7 +104,7 @@ export default function Addmenulist({ }) {
     }
   };
 
- 
+
 
   const deleteFoodsById = async (id) => {
     try {
@@ -176,16 +177,19 @@ export default function Addmenulist({ }) {
             </div>
             <div className="text-center py-3">
               <button
-                className="h-10 bg-yellow-400 px-2 py-1 w-20 rounded-md text-white font-semibold"
+                className="h-10 bg-yellow-400 px-2 py-1 w-24 rounded-md text-white font-semibold"
                 type="submit"
               >
-                เพิ่ม
+                <div className="flex space-x-2 justify-center">
+                  <HiOutlineSaveAs size={20} />
+                  <div className="text-sm">เพิ่ม</div>
+                </div>
               </button>
             </div>
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList}  getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById}/>
+      <Allmenu menuList={menuList} getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById} />
     </div>
   );
 }
