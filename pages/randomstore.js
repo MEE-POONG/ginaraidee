@@ -11,10 +11,14 @@ const defaultStoreState = [
 ]
 export default function Testrandom() {
   const [storeList, setStoreList] = useState(defaultStoreState)
+  const [menuByStoreList, setMenuByStoreList] = useState()
+
   const [random, setRandom] = useState(storeList[0]);
   const setListStore = useSetRecoilState(listStoreState);
   useEffect(() => {
     getStoreData()
+    getNameMenuBystore()
+
   }, [])
 
   const getStoreData = async () => {
@@ -27,6 +31,15 @@ export default function Testrandom() {
       console.log(error);
     }
   }
+  const getNameMenuBystore = async() =>{
+    try {
+        const{data} = await axios.get('/api/menubystore')
+        setMenuByStoreList(data?.data)//ในหน้าที่เราคลิกเลือกร้านค้า
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 
   function randomImg() {

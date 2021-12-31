@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Foodlist from "../components/foodlist";
 import { data } from "autoprefixer";
+// import Image from "next/image";
 
 const initialState = {
   name: "",
@@ -78,7 +79,7 @@ export default function Addfood() {
         name: data.data.name,
         staple: data.data.staple,
         step: data.data.step,
-        // img: data.data.name,
+        // img: data.data.img
       });
     } catch (error) {
       console.log(error);
@@ -101,16 +102,16 @@ export default function Addfood() {
         menuData.img = data?.filename || formMenu?.img;
       }
 
-      setImgFile(""); //
+      setImgFile("");
 
-      console.log(menuData);
+      // console.log(menuData);
 
       const setDataError = await setDataMenu(menuData);
       if (setDataError) return;
     } catch (error) {
       return true;
     }
-  };
+  }; //ส่วนเพิ่มรูปภาพ
   const setDataMenu = async (data) => {
     try {
       if (isEdit) {
@@ -155,6 +156,12 @@ export default function Addfood() {
       });
     }
   };
+  const showImage = () =>
+    !formMenu.img
+      ? imgFile
+        ? URL.createObjectURL(imgFile)
+        : "https://i.stack.imgur.com/y9DpT.jpg"
+      : "uploads/" + formMenu.img;
   console.log(data);
 
   return (
@@ -222,6 +229,9 @@ export default function Addfood() {
 
             <div className="m-2">
               เพิ่มรูปภาพอาหาร
+              <div className="App-image">
+                <img src={showImage()} width="500px"/>
+              </div>
               <input
                 className="py-1"
                 type="file"

@@ -86,7 +86,7 @@ export default function Foodlist({ data, getFoodsDataById, deleteFoodsById }) {
                             className="ml-2 text-red-600 hover:text-red-900"
                             
                           >
-                            Delete {menu._id}
+                            Delete
                             
                           </a>
                         </td>
