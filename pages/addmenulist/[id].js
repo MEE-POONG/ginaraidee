@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { HiOutlineSaveAs } from "react-icons/hi";
 
 const defaultFormMenu = { name: "", price: "", storeId: "" };
 export default function Addmenulist({ }) {
@@ -12,6 +13,7 @@ export default function Addmenulist({ }) {
 
   const [store, setStore] = useState();
   const [formMenu, setFormMenu] = useState(defaultFormMenu);
+  const [isEdit, setIsEdit] = useState(false);
   const [menuList, setMenuList] = useState();
   console.log(menuList);
 
@@ -40,7 +42,6 @@ export default function Addmenulist({ }) {
     if (validationError) return;
     const setDataError = await setDataMenu();
     if (setDataError) return;
-    console.log();
     setFormMenu(defaultFormMenu);
     await Swal.fire({
       icon: "success",
@@ -62,12 +63,17 @@ export default function Addmenulist({ }) {
 
   const setDataMenu = async () => {
     try {
-      await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+      if (isEdit) {
+        await axios.put("/api/food/" + formMenu._id, formMenu);
+      } else {
+        await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+      }
     } catch (error) {
-      return Swal.fire({
+      Swal.fire({
         icon: "error",
         title: "เพิ่มข้อมูลไม่สำเร็จ",
       });
+      return true;
     }
   };
 
@@ -83,6 +89,22 @@ export default function Addmenulist({ }) {
     }
   };
 
+  const getFoodsDataById = async (id) => {
+    try {
+      const { data } = await axios.get("/api/food/" + id);
+      setIsEdit(true);
+      setFormMenu({
+        _id: data.data._id,
+        name: data.data.name,
+        price: data.data.price,
+        storeId: data.data.storeId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 
   const deleteFoodsById = async (id) => {
     try {
@@ -94,7 +116,7 @@ export default function Addmenulist({ }) {
         showCancelButton: true,
       }).then(async e => {
         if (e.isConfirmed) {
-          await axios.delete('/api/menu/' + id)
+          await axios.delete('/api/food/' + id)
           await Swal.fire({
             icon: 'success',
             title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -155,16 +177,19 @@ export default function Addmenulist({ }) {
             </div>
             <div className="text-center py-3">
               <button
-                className="h-10 bg-yellow-400 px-2 py-1 w-20 rounded-md text-white font-semibold"
+                className="h-10 bg-yellow-400 px-2 py-1 w-24 rounded-md text-white font-semibold"
                 type="submit"
               >
-                เพิ่ม
+                <div className="flex space-x-2 justify-center">
+                  <HiOutlineSaveAs size={20} />
+                  <div className="text-sm">เพิ่ม</div>
+                </div>
               </button>
             </div>
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById}/>
+      <Allmenu menuList={menuList} getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById} />
     </div>
   );
 }

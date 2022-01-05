@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 
 
-function Navbar() {
+function Nav() {
 	const [isOpen, setIsOpen] = useState(false);
 	const router = useRouter();
 	return (
@@ -156,4 +156,4 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+export default Nav;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 
-function Nav() {
+function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const router = useRouter();
 	return (
@@ -155,4 +155,4 @@ function Nav() {
 	);
 }
 
-export default Nav;
+export default Navbar;
