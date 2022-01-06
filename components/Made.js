@@ -1,6 +1,6 @@
 import React from "react";
 
-// import Image from "next/image";
+import Image from "next/image";
 
 export default function Made({ data, listMenu }) {
   console.log(data);
@@ -16,6 +16,17 @@ export default function Made({ data, listMenu }) {
               <div className="border-2 border-gray-300 rounded-lg px-3 bg-white py-5 ">
                 <div className="font-bold text-center text-2xl">
                   {listMenu.name}
+                </div>
+                <div className="text-center py-6">
+                  <Image
+                    src={
+                      `http://upload-image.gin-a-rai-dee.daddybody.company/` +
+                      listMenu.img
+                    }
+                    alt=""
+                    width={200}
+                    height={200}
+                  />
                 </div>
 
                 <p className=" text-center text-lg m-2">วัตถุดิบและวิธีการทำ</p>

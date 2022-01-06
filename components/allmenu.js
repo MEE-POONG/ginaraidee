@@ -45,7 +45,7 @@ export default function Allmenu({ menuList,getFoodsDataById, deleteFoodsById }) 
                   height={150}
                 />
               </div>
-            <div class="grid grid-cols-2 py-5">
+            <div className="grid grid-cols-2 py-5">
               <h1 className="mt-4 px-5 text-left text-lg col-span-1 text-gray-900 font-bold">{menu.name}</h1>
               <h1 className="mt-4 px-5 text-left text-lg col-span-1 text-gray-900 font-bold">{menu.price} บาท</h1>
             </div>
