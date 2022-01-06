@@ -15,4 +15,4 @@ const listStoredrinkState = atom({
   },
   effects_UNSTABLE: [persistAtom],
 });
-export { listStoredrink };
+export { listStoredrinkState };

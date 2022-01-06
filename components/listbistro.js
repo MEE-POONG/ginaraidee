@@ -26,6 +26,17 @@ export default function Listbistro({ data, listStore }) {
   return (
     <div>
       <div className="text-center py-5">
+        <div className="">
+              <Image
+                src={
+                  `http://upload-image.gin-a-rai-dee.daddybody.company/` +
+                  listStore.img
+                }
+                alt=""
+                width={100}
+                height={100}
+              />
+            </div>
         <h1 className="text-2xl bg-shadow font-bold py-5">
           ร้าน {listStore.namestore}
         </h1>
