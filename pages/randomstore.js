@@ -5,6 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { listStoreState } from "../contaxt/liststore";
 import _ from "lodash";
 import axios from "axios";
+import Image from "next/image";
 
 const defaultStoreState = [
   { id: "1", name: "สุ่มอีกรอบ", image: "/images/randomnow.png" }
@@ -31,15 +32,15 @@ export default function Testrandom() {
       console.log(error);
     }
   }
-  const getNameMenuBystore = async() =>{
+  const getNameMenuBystore = async () => {
     try {
-        const{data} = await axios.get('/api/menubystore')
-        setMenuByStoreList(data?.data)//ในหน้าที่เราคลิกเลือกร้านค้า
+      const { data } = await axios.get('/api/menubystore')
+      setMenuByStoreList(data?.data)//ในหน้าที่เราคลิกเลือกร้านค้า
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
 
-}
+  }
 
 
   function randomImg() {
@@ -57,7 +58,11 @@ export default function Testrandom() {
   const router = useRouter();
   return (
     <div className="">
-      
+
+      <div className="text-gray-800 text-7xl my-4 ">
+        <Image src={random.image || `http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
+      </div>
+
       <div className="grid grid-cols-4 gap-4 m-2">
         <h1 className="text-2xl col-span-1 font-bold py-3 ">ร้าน</h1>
         <h1 className="text-2xl col-span-3 px-5 font-bold py-3 text-left text-yellow-400 col-span-2"> {random.namestore}</h1>

@@ -32,16 +32,6 @@ function Navbar() {
 										{"Home"}
 									</button>
 									<button
-										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-
-										onClick={() => {
-											router.push('/');
-										}}
-
-									>
-										{"Contact"}
-									</button>
-									<button
 										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
 
 										onClick={() => {
@@ -125,16 +115,6 @@ function Navbar() {
 
 									>
 										{"Home"}
-									</button>
-									<button
-										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-
-										onClick={() => {
-											router.push('/');
-										}}
-
-									>
-										{"Contact"}
 									</button>
 									<button
 										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
