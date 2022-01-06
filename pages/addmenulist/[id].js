@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { HiOutlineSaveAs } from "react-icons/hi";
 
-const defaultFormMenu = { name: "", price: "",img: "", storeId: "" };
+const defaultFormMenu = { name: "", price: "", img: "", storeId: "" };
 export default function Addmenulist({ }) {
   const router = useRouter();
   // console.log(router.query.id);
@@ -42,8 +42,10 @@ export default function Addmenulist({ }) {
     e.preventDefault();
     const validationError = validationMenu();
     if (validationError) return;
-    const setDataError = await setDataMenu();
+    const setDataError = await setDataMenus();
     if (setDataError) return;
+    const setDataImgError = await uploadImage(imgFile);
+    if (setDataImgError) return;
     setFormMenu(defaultFormMenu);
     await Swal.fire({
       icon: "success",
@@ -63,7 +65,21 @@ export default function Addmenulist({ }) {
     }
   };
 
-  
+  const setDataMenus = async () => {
+    try {
+      if (isEdit) {
+        await axios.put("/api/food/" + formMenu._id, formMenu);
+      } else {
+        await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "เพิ่มข้อมูลไม่สำเร็จ",
+      });
+      return true;
+    }
+  };
 
   const getStoreData = async () => {
     try {
@@ -77,7 +93,22 @@ export default function Addmenulist({ }) {
     }
   };
 
-  
+  const getFoodsDataById = async (id) => {
+    try {
+      const { data } = await axios.get("/api/food/" + id);
+      setIsEdit(true);
+      setFormMenu({
+        _id: data.data._id,
+        name: data.data.name,
+        price: data.data.price,
+        storeId: data.data.storeId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   const uploadImage = async (img) => {
     try {
       let menuByStoreData;
@@ -102,7 +133,11 @@ export default function Addmenulist({ }) {
   }; //ส่วนเพิ่มรูปภาพ
   const setDataMenu = async (menuByStoreData) => {
     try {
-      await axios.post("/api/food", { ...menuByStoreData, storeId: router.query.id });
+      if (isEdit) {
+        await axios.put("/api/food/" + formMenu._id, formMenu);
+      } else {
+        await axios.post("/api/food", { ...menuByStoreData, storeId: router.query.id });
+      }
     } catch (error) {
       return Swal.fire({
         icon: "error",
@@ -187,18 +222,25 @@ export default function Addmenulist({ }) {
                 />
               </div>
             </div>
-            <div className="m-2">
-              เพิ่มรูปภาพอาหาร
-              <div className="App-image">
-                <img src={showImage()} width="500px"/>
-              </div>
-              <input
-                className="py-1"
-                type="file"
-                onChange={handelSubmitFile}
-                id="img"
-                name="img"
-              />
+            <div className="flex items-center justify-center w-full">
+              <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+                <div className="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  </svg>
+                  <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+                    <img className="has-mask h-36 object-center" src={showImage()} />
+                  </div>
+                  <p className="pointer-none text-gray-500 "><span className="text-sm">เลือกไฟล์</span></p>
+                </div>
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={handelSubmitFile}
+                  id="img"
+                  name="img"
+                />
+              </label>
             </div>
             <div className="text-center py-3">
               <button
@@ -214,7 +256,7 @@ export default function Addmenulist({ }) {
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById} />
+      <Allmenu menuList={menuList} getFoodsDataById={getFoodsDataById} deleteFoodsById={deleteFoodsById} />
     </div>
   );
 }
