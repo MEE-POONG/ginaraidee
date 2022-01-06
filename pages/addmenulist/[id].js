@@ -215,7 +215,7 @@ export default function Addmenulist({ }) {
           </form>
         </div>
       </div>
-      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById}/>
+      <Allmenu menuList={menuList} deleteFoodsById={deleteFoodsById} />
     </div>
   );
 }
