@@ -6,18 +6,16 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { HiOutlineSaveAs } from "react-icons/hi";
 
-const defaultFormMenu = { name: "", price: "", storeId: "" };
+const defaultFormMenu = { name: "", price: "",img: "", storeId: "" };
 export default function Addmenulist({ }) {
   const router = useRouter();
-  console.log(router.query.id);
-
+  // console.log(router.query.id);
   const [store, setStore] = useState();
   const [formMenu, setFormMenu] = useState(defaultFormMenu);
   const [isEdit, setIsEdit] = useState(false);
   const [menuList, setMenuList] = useState();
-  console.log(menuList);
-
-
+  const [imgFile, setImgFile] = useState();
+  // console.log(menuList);
   useEffect(() => {
     getMenuData();
     getStoreData();
@@ -34,6 +32,10 @@ export default function Addmenulist({ }) {
       console.log(error);
     }
 
+  };
+  const handelSubmitFile = async (event) => {
+    const file = event.target.files[0];
+    setImgFile(file);
   };
 
   const handelSubmit = async (e) => {
@@ -61,21 +63,7 @@ export default function Addmenulist({ }) {
     }
   };
 
-  const setDataMenu = async () => {
-    try {
-      if (isEdit) {
-        await axios.put("/api/food/" + formMenu._id, formMenu);
-      } else {
-        await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "เพิ่มข้อมูลไม่สำเร็จ",
-      });
-      return true;
-    }
-  };
+  
 
   const getStoreData = async () => {
     try {
@@ -89,22 +77,46 @@ export default function Addmenulist({ }) {
     }
   };
 
-  const getFoodsDataById = async (id) => {
+  
+  const uploadImage = async (img) => {
     try {
-      const { data } = await axios.get("/api/food/" + id);
-      setIsEdit(true);
-      setFormMenu({
-        _id: data.data._id,
-        name: data.data.name,
-        price: data.data.price,
-        storeId: data.data.storeId,
-      });
+      let menuByStoreData;
+      menuByStoreData = { ...formMenu };
+      if (img) {
+        let formData = new FormData();
+        formData.append("file", img, img.name);
+        const { data } = await axios.post(
+          "http://upload-image.gin-a-rai-dee.daddybody.company/upload/",
+          formData
+        );
+        console.log(data?.filename);
+        menuByStoreData.img = data?.filename || formMenu?.img;
+      }
+      setImgFile("");
+      console.log(menuByStoreData);
+      const setDataImgError = await setDataMenu(menuByStoreData); //ส่งไปยัง setDataStore
+      if (setDataImgError) return;
     } catch (error) {
-      console.log(error);
+      return true;
+    }
+  }; //ส่วนเพิ่มรูปภาพ
+  const setDataMenu = async (menuByStoreData) => {
+    try {
+      await axios.post("/api/food", { ...menuByStoreData, storeId: router.query.id });
+    } catch (error) {
+      return Swal.fire({
+        icon: "error",
+        title: "เพิ่มข้อมูลไม่สำเร็จ",
+      });
     }
   };
 
-
+  const showImage = () =>
+    !formMenu.img
+      ? imgFile
+        ? URL.createObjectURL(imgFile)
+        : "https://i.stack.imgur.com/y9DpT.jpg"
+      : "uploads/" + formMenu.img;
 
   const deleteFoodsById = async (id) => {
     try {
@@ -174,6 +186,19 @@ export default function Addmenulist({ }) {
                   className="border-2 border-yellow-400 rounded-md w-full h-11 outline-none px-5"
                 />
               </div>
+            </div>
+            <div className="m-2">
+              เพิ่มรูปภาพอาหาร
+              <div className="App-image">
+                <img src={showImage()} width="500px"/>
+              </div>
+              <input
+                className="py-1"
+                type="file"
+                onChange={handelSubmitFile}
+                id="img"
+                name="img"
+              />
             </div>
             <div className="text-center py-3">
               <button
