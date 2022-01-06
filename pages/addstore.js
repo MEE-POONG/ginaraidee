@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Storelist } from "../components/storeList";
+// import { data } from "autoprefixer";
+// import { data } from "autoprefixer";
 
 const initialState = {
   namestore: "",
@@ -18,12 +20,12 @@ export default function Addstore() {
 
   useEffect(() => {
     getStoreData();
+    // setDataStore();
   }, []);
 
   const getStoreData = async () => {
     try {
       const { data } = await axios.get("/api/stores/");
-      
       setStoreList(data?.data);
       console.log(data);
     } catch (error) {
@@ -39,12 +41,13 @@ export default function Addstore() {
     e.preventDefault();
     const validationError = validationStore();
     if (validationError) return;
-    const setDataError = await setDataStore();
-    if (setDataError) return;
+
     const setDataImgError = await uploadImage(imgFile);
     if (setDataImgError) return;
-    console.log(img);
+    // console.log();
+
     setFormStore(initialState);
+
     await Swal.fire({
       icon: "success",
       title: "เพิ่มข้อมูลสำเร็จ",
@@ -53,15 +56,23 @@ export default function Addstore() {
     });
     await getStoreData();
   };
-  
+
+  const validationStore = () => {
+    if (!namestore) {
+      return Swal.fire({
+        icon: "error",
+        title: "กรอกข้อมูลไม่ครบ",
+      });
+    }
+  };
+
   const uploadImage = async (img) => {
     try {
       let storeData;
       storeData = { ...formStore };
-
       if (img) {
         let formData = new FormData();
-        formData.append("file", img, img.name);
+        formData.append("file", img, img.namestore);
         const { data } = await axios.post(
           "http://upload-image.gin-a-rai-dee.daddybody.company/upload/",
           formData
@@ -69,13 +80,10 @@ export default function Addstore() {
         console.log(data?.filename);
         storeData.img = data?.filename || formStore?.img;
       }
-
       setImgFile("");
-
-      // console.log(menuData);
-
-      const setDataError = await setDataMenu(storeData);
-      if (setDataError) return;
+      console.log(storeData);
+      const setDataImgError = await setDataStore(storeData); //ส่งไปยัง setDataStore
+      if (setDataImgError) return;
     } catch (error) {
       return true;
     }
@@ -87,25 +95,19 @@ export default function Addstore() {
         : "https://i.stack.imgur.com/y9DpT.jpg"
       : "uploads/" + formStore.img;
 
-  const setDataStore = async () => {
+  const setDataStore = async (storeData) => {
     try {
-      await axios.post("/api/stores", formStore);
+      // console.log(storeData);
+      await axios.post("/api/stores", storeData);
     } catch (error) {
-      return Swal.fire({
+      Swal.fire({
         icon: "error",
         title: "เพิ่มข้อมูลไม่สำเร็จ",
       });
+      return true;
     }
-  };
+  }; //ตัวรับรูปภาพมาจาก uploadImage
 
-  const validationStore = () => {
-    if (!namestore) {
-      return Swal.fire({
-        icon: "error",
-        title: "กรอกข้อมูลไม่ครบ",
-      });
-    }
-  };
   return (
     <div>
       <Nav />
@@ -127,9 +129,6 @@ export default function Addstore() {
                 placeholder="ชื่อร้าน"
                 className="border-2 border-yellow-400 rounded-md w-full h-11 outline-none px-5"
               />
-              <button className="bg-yellow-400 px-2 py-1 w-20 rounded-md text-white font-semibold">
-                เพิ่ม
-              </button>
             </div>
             <div className="m-2">
               เพิ่มรูปภาพร้านอาหาร
@@ -143,6 +142,11 @@ export default function Addstore() {
                 id="img"
                 name="img"
               />
+            </div>
+            <div className="text-center py-4">
+              <button className="bg-yellow-400 px-2 py-1 w-20 rounded-md text-white font-semibold">
+                เพิ่ม
+              </button>
             </div>
           </form>
           <div className="py-5">

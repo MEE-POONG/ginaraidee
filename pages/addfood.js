@@ -17,10 +17,11 @@ const defaultMenuState = [];
 export default function Addfood() {
   const [formMenu, setFormMenu] = useState(initialState);
   const [menuList, setMenuList] = useState(defaultMenuState);
-  //  const [upImg, setUpImg] = useState(initialState)
   const [isEdit, setIsEdit] = useState(false);
   const { name, staple, step } = formMenu;
   const [imgFile, setImgFile] = useState();
+  //  const [upImg, setUpImg] = useState(initialState)
+
 
   useEffect(() => {
     getMenuData();
