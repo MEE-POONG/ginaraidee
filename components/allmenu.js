@@ -1,6 +1,8 @@
-import React from 'react'
-import { RiDeleteBin5Line } from "react-icons/ri";
+import React from "react";
+import Image from "next/image";
+import { RiDeleteBin5Line } from "react-icons/ri"; 
 import { FiEdit } from "react-icons/fi";
+import { MdOutlineCancel } from "react-icons/md";
 
 export default function   Allmenu({ menuList, deleteFoodsById }) {
   const [showModalfood, setShowModal] = React.useState(false);
