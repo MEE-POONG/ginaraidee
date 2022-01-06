@@ -43,6 +43,16 @@ function Nav() {
 										{"เพิ่มร้านอาหาร"}
 									</button>
 									<button
+										className="cursor-pointer hover:bg-white text-black hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+
+										onClick={() => {
+											router.push('/addstoredrink');
+										}}
+
+									>
+										{"เพิ่มร้านน้ำ"}
+									</button>
+									<button
 										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
 
 										onClick={() => {
@@ -136,6 +146,16 @@ function Nav() {
 
 									>
 										{"เพิ่มร้านอาหาร"}
+									</button>
+									<button
+										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+
+										onClick={() => {
+											router.push('/addstoredrink');
+										}}
+
+									>
+										{"เพิ่มร้านน้ำ"}
 									</button>
 									<button
 										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
