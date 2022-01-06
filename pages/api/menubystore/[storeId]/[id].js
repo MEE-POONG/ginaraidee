@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             break
         case 'DELETE':
             try {
-                const menus = await Menu.findOneAndRemove(req.query.id);
+                const menus = await Menu.deleteOne({_id:req.query.id});
                 res.status(200).json({ success: true, data: menus })
             } catch (error) {
                 res.status(400).json({ success: false })
