@@ -8,14 +8,14 @@ export default function Modalfood() {
   const [showModalfood, setShowModal] = React.useState(false);
 
   return (
-    <div className="py-10 justify-center items-center flex ">
-      <div className="border-0 rounded-lg shadow-lg w-64 h-64 cursor-pointer shover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
-        <div
-          className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5"
+    <div className=" justify-center items-center flex  ">
+      <div className="border-0 rounded-lg shadow-lg w-full h-auto  cursor-pointer shover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
+      <div
+          className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5 "
           type="button"
           onClick={() => setShowModal(true)}
         >
-          <Image className="text-center w-full h-full object-center  lg:w-full  rounded-lg"
+          <Image 
             src="/images/food.webp"
             alt=""
             width={200}
