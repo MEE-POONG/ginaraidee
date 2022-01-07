@@ -3,7 +3,7 @@
 import mongoose from 'mongoose'
 
 const AddStoredrinkSchema = new mongoose.Schema({
-    namestore: String,
+    namestoredrink: String,
     img:String
 })
 

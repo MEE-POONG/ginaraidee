@@ -7,7 +7,7 @@ import Storedrinklist from "../components/Storedrinklist";
 
 
 const initialState = {
-    namestore: "",
+    namestoredrink: "",
     img: "",
 };
 
@@ -15,7 +15,7 @@ const defaultStoredrinkState = [];
 export default function Addstoredrink() {
     const [formStoredrink, setFormStoredrink] = useState(initialState);
     const [storedrinkList, setStoredrinkList] = useState(defaultStoredrinkState);
-    const { namestore } = formStoredrink;
+    const { namestoredrink } = formStoredrink;
     const [imgFile, setImgFile] = useState();
   
     useEffect(() => {
@@ -58,7 +58,7 @@ export default function Addstoredrink() {
     };
   
     const validationStoredrink = () => {
-      if (!namestore) {
+      if (!namestoredrink) {
         return Swal.fire({
           icon: "error",
           title: "กรอกข้อมูลไม่ครบ",
@@ -72,7 +72,7 @@ export default function Addstoredrink() {
         storedrinkData = { ...formStoredrink };
         if (img) {
           let formData = new FormData();
-          formData.append("file", img, img.namestore);
+          formData.append("file", img, img.namestoredrink);
           const { data } = await axios.post(
             "http://upload-image.gin-a-rai-dee.daddybody.company/upload/",
             formData
@@ -121,9 +121,9 @@ export default function Addstoredrink() {
                         <div className="flex space-x-2 p-1 bg-yellow-100 rounded-md">
                             <input
                                  onChange={(e) =>
-                                    setFormStoredrink({ ...formStoredrink, namestore: e.target.value })
+                                    setFormStoredrink({ ...formStoredrink, namestoredrink: e.target.value })
                                   }
-                                  value={namestore}
+                                  value={namestoredrink}
                                 type="text"
                                 placeholder="ชื่อร้าน"
                                 className="border-2 border-yellow-400 rounded-md w-full h-11 outline-none px-5"

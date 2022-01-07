@@ -1,21 +1,21 @@
 import Nav from "../../components/nav";
-import Alldrink from "../../components/alldrink";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Alldrink from "../../components/alldrink";
 import { HiOutlineSaveAs } from "react-icons/hi";
 
-const defaultFormDrink = { name: "", price: "", img: "", storedrinkId: "" };
+const defaultFormDrink = { name: "", price: "", img: "", StoredrinkId: "" };
 export default function Adddrinklist({ }) {
   const router = useRouter();
   // console.log(router.query.id);
-  const [storedrink, setStoredrink] = useState();
+  const [Storedrink, setStoredrink] = useState();
   const [formDrink, setFormDrink] = useState(defaultFormDrink);
   const [isEdit, setIsEdit] = useState(false);
   const [drinkList, setDrinkList] = useState();
   const [imgFile, setImgFile] = useState();
-  // console.log(menuList);
+  // console.log(drinkList);
   useEffect(() => {
     getDrinkData();
     getStoredrinkData();
@@ -24,7 +24,7 @@ export default function Adddrinklist({ }) {
   const getDrinkData = async () => {
     try {
       if (router.query.id) {
-        const { data } = await axios.get("/api/drinkst/" + router.query.id);
+        const { data } = await axios.get("/api/drinkbystore/" + router.query.id);
         setDrinkList(data?.data);
         console.log(data);
       }
@@ -70,7 +70,7 @@ export default function Adddrinklist({ }) {
       if (isEdit) {
         await axios.put("/api/drink/" + formDrink._id, formDrink);
       } else {
-        await axios.post("/api/drink", { ...formDrink, storedrinkId: router.query.id });
+        await axios.post("/api/drink", { ...formDrink, StoredrinkdrinkId: router.query.id });
       }
     } catch (error) {
       Swal.fire({
@@ -101,7 +101,7 @@ export default function Adddrinklist({ }) {
         _id: data.data._id,
         name: data.data.name,
         price: data.data.price,
-        storedrinkId: data.data.storedrinkId,
+        StoredrinkId: data.data.StoredrinkId,
       });
     } catch (error) {
       console.log(error);
@@ -111,8 +111,8 @@ export default function Adddrinklist({ }) {
 
   const uploadImage = async (img) => {
     try {
-      let menuByStoreData;
-      menuByStoreData = { ...formDrink };
+      let drinkByStoredrinkData;
+      drinkByStoredrinkData = { ...formDrink };
       if (img) {
         let formData = new FormData();
         formData.append("file", img, img.name);
@@ -121,22 +121,22 @@ export default function Adddrinklist({ }) {
           formData
         );
         console.log(data?.filename);
-        menuByStoreData.img = data?.filename || formDrink?.img;
+        drinkByStoredrinkData.img = data?.filename || formDrink?.img;
       }
       setImgFile("");
-      console.log(menuByStoreData);
-      const setDataImgError = await setDataDrink(menuByStoreData); //ส่งไปยัง setDataStore
+      console.log(drinkByStoredrinkData);
+      const setDataImgError = await setDataDrink(drinkByStoredrinkData); //ส่งไปยัง setDataStoredrink
       if (setDataImgError) return;
     } catch (error) {
       return true;
     }
   }; //ส่วนเพิ่มรูปภาพ
-  const setDataDrink = async (menuByStoreData) => {
+  const setDataDrink = async (drinkByStoredrinkData) => {
     try {
       if (isEdit) {
         await axios.put("/api/drink/" + formDrink._id, formDrink);
       } else {
-        await axios.post("/api/drink", { ...menuByStoreData, storedrinkId: router.query.id });
+        await axios.post("/api/drink", { ...drinkByStoredrinkData, StoredrinkId: router.query.id });
       }
     } catch (error) {
       return Swal.fire({
@@ -181,7 +181,7 @@ export default function Adddrinklist({ }) {
     }
   }
 
-  if (!storedrink) return <div>loading...</div>;
+  if (!Storedrink) return <div>loading...</div>;
   return (
     <div>
       <Nav />
@@ -189,10 +189,10 @@ export default function Adddrinklist({ }) {
         <div className="px-4 flex-auto">
           <div className="text-center">
             <h1 className="text-2xl bg-shadow font-bold py-5">
-              ร้าน {storedrink.namestore}{" "}
+              ร้าน {Storedrink.nameStoredrink}{" "}
             </h1>
             <h1 className="text-2xl bg-shadow font-bold py-5">
-              เพิ่มเมนูเครื่องดื่ม
+              เพิ่มเมนูอาหาร
             </h1>
           </div>
           <form className="w-full max-w-lg py-5" onSubmit={handelSubmit}>

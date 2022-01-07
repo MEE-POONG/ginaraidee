@@ -9,7 +9,7 @@ export default function Modalstore() {
 
 
   return (
-    <div className=" justify-center items-center flex   ">
+    <div className=" justify-center items-center flex px-10  ">
     <div className="border-0 rounded-lg shadow-lg w-full h-auto  cursor-pointer shover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
         <div
           className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5 "

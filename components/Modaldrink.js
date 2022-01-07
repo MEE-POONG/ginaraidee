@@ -8,7 +8,7 @@ export default function Modaldrink() {
   const [showModalfood, setShowModal] = React.useState(false);
 
   return (
-    <div className=" justify-center items-center flex  ">
+    <div className=" justify-center items-center flex px-10 ">
         <div className="border-0 rounded-lg shadow-lg w-full h-auto cursor-pointer shover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
         <div
           className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5"
@@ -36,7 +36,7 @@ export default function Modaldrink() {
                 <MdOutlineCancel size={24} className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
               </div>
               <div className="text-center p-5 flex-auto justify-center">
-                <h2 className="text-2xl font-bold ">เมนูอาหารสำหรับวันนี้</h2>
+                <h2 className="text-2xl font-bold ">ร้านเคื่องดื่มสำหรับวันนี้</h2>
                 <Testrandomdrink />
               </div>
             </div>

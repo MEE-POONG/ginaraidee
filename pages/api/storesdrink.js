@@ -1,7 +1,7 @@
 // api/menus.js
 
 import dbConnect from '../../lib/dbConnect'
-import Storedrinks from '../../models/Storedrinks'
+import Storedrink from '../../models/Storedrink'
 
 export default async function handler (req, res) {
   const { method } = req
@@ -11,16 +11,16 @@ export default async function handler (req, res) {
   switch (method) {
     case 'GET':
       try {
-        const Storesdrinks = await Storedrinks.find({})
-        res.status(200).json({ success: true, data: Storesdrinks })
+        const storesdrinks = await Storedrink.find({})
+        res.status(200).json({ success: true, data: storesdrinks })
       } catch (error) {
         res.status(400).json({ success: false })
       }
       break
     case 'POST':
       try {
-        const Storesdrinks = await Storedrinks.create(req.body)
-        res.status(201).json({ success: true, data: Storesdrinks })
+        const storesdrinks = await Storedrink.create(req.body)
+        res.status(201).json({ success: true, data: storesdrinks })
       } catch (error) {
         res.status(400).json({ success: false })
       }
