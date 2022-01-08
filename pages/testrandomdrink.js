@@ -70,7 +70,7 @@ export default function Testrandomdrink() {
         onClick={() => {
             setListDrink(random)
           router.push({
-            pathname: "/"//ลิงค์ไปไหนสักที่
+            pathname: "/drinkstore"//ลิงค์ไปไหนสักที่
           });
         }}
       >

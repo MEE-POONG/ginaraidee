@@ -36,7 +36,7 @@ export default function Modaldrink() {
                 <MdOutlineCancel size={24} className="float-right cursor-pointer hover:shadow-2xl hover:scale-105 transform transition-all duration-500" />
               </div>
               <div className="text-center p-5 flex-auto justify-center">
-                <h2 className="text-2xl font-bold ">ร้านเคื่องดื่มสำหรับวันนี้</h2>
+                <h2 className="text-2xl font-bold ">ร้านเครื่องดื่มสำหรับวันนี้</h2>
                 <Testrandomdrink />
               </div>
             </div>

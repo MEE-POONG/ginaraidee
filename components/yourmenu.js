@@ -18,14 +18,14 @@ export default function Yourmenu() {
           <div>
             <span><Modalfood /></span>
             <div className="mt-8">
-              <span className="text-2xl "> สุ่มอาหาร  </span>
+              <span className="text-2xl font-bold"> สุ่มอาหาร  </span>
             </div>
           </div>
 
           <div>
             <span>    <Modaldrink /></span>
             <div className="mt-8">
-              <span className="text-2xl mt-10">สุ่มเครื่องดื่ม  </span>
+              <span className="text-2xl mt-10 font-bold">สุ่มเครื่องดื่ม  </span>
             </div>
           </div>
 
@@ -33,7 +33,7 @@ export default function Yourmenu() {
           <div>
             <span>     <Modalstore /></span>
             <div className="mt-8">
-              <span className="text-2xl mt-10"> สุ่มร้านค้า  </span>
+              <span className="text-2xl mt-10 font-bold"> สุ่มร้านค้า  </span>
             </div>
           </div>
 
