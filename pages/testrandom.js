@@ -49,7 +49,7 @@ export default function Testrandom() {
     <div className="">
     
       <div className="text-gray-800 text-7xl my-4 ">
-        <Image src={random.image ||`http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
+        <Image className="rounded-2xl" src={random.image ||`http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
       </div>
       
       <div className="grid grid-cols-4 gap-4 m-2">
