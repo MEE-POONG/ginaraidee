@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import {Store} from "../components/store"
+import { Store } from "../components/store"
 const initialState = {
     namestore: '',
 }
@@ -27,14 +27,12 @@ export default function Delivery() {
         }
     }
 
-	return (
-		<div>
-			<Navbar />
-			<div className="container mx-auto max-w-lg">
-				<div className="px-4 flex-auto">
-					<Store data={storeList} />
-				</div>
-			</div>
-		</div>
-	);
+    return (
+        <div>
+            <Navbar />
+            <div className="">
+                <Store data={storeList} />
+            </div>
+        </div>
+    );
 }

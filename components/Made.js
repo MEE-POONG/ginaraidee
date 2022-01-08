@@ -17,7 +17,7 @@ export default function Made({ data, listMenu }) {
                 <div className="font-bold text-center text-2xl">
                   {listMenu.name}
                 </div>
-                <div className="text-center py-6">
+                <div className="text-center py-6 ">
                   <Image
                     src={
                       `http://upload-image.gin-a-rai-dee.daddybody.company/` +
@@ -26,6 +26,7 @@ export default function Made({ data, listMenu }) {
                     alt=""
                     width={200}
                     height={200}
+                    className="rounded-3xl"
                   />
                 </div>
 

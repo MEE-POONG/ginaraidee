@@ -5,8 +5,7 @@ import { GiWorld } from "react-icons/gi";
 
 export default function Footer() {
   return (
-    <div className="fixed left-0 right-0 bottom-0 bg-white p-0">
-      <footer className="bg-gray-50 text-gray-600 px-6 lg:px-8 py-10">
+      <footer className="bg-gray-50 text-gray-600 px-6 lg:px-8 py-10 mt-32">
         <div className="max-w-screen-xl mx-auto ">
           <div className="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-200 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
             <div className="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
@@ -102,6 +101,5 @@ export default function Footer() {
           <p className="text-sm text-center">&copy;2022 Company. Mee Poong Group | All rights reserved</p>
         </div>
       </footer>
-    </div>
   );
 }

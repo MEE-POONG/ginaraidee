@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
+// import { IoFastFoodOutline } from "react-icons/io";
+import { IoFastFoodOutline } from "react-icons/io5";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -13,10 +15,13 @@ function Navbar() {
 						<div className="flex items-center  mx-20  justify-between w-full">
 							<div className="flex justify-center items-center flex-shrink-0 ">
 								<h1 className=" font-bold text-xl cursor-pointer" type="button"
-								onClick={() => {
-									router.push("/");
-								}}>
-									Gin<span className="text-white">Araidee</span>
+									onClick={() => {
+										router.push("/");
+									}}>
+									<div className="flex space-x-2 justify-center">
+										<IoFastFoodOutline size={35} />
+										<a className="mt-2">Gin<span className="text-white">Araidee</span></a>
+									</div>
 								</h1>
 							</div>
 							<div className="hidden md:block">
@@ -107,25 +112,25 @@ function Navbar() {
 								className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3"
 							>
 								<button
-										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+									className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
-										onClick={() => {
-											router.push('/');
-										}}
+									onClick={() => {
+										router.push('/');
+									}}
 
-									>
-										{"Home"}
-									</button>
-									<button
-										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+								>
+									{"Home"}
+								</button>
+								<button
+									className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 
-										onClick={() => {
-											router.push('/login');
-										}}
+									onClick={() => {
+										router.push('/login');
+									}}
 
-									>
-										{"Login Admin"}
-									</button>
+								>
+									{"Login Admin"}
+								</button>
 							</div>
 						</div>
 					)}
