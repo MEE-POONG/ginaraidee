@@ -14,7 +14,7 @@ export default function Yourmenu() {
 
       </div>
       <div className="  text-center place-content-center">
-        <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-12 ml-4 mr-4 mb-12">
+        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-12 ml-4 mr-4 mb-12">
           <div>
             <span><Modalfood /></span>
             <div className="mt-8">

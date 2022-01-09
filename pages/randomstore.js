@@ -12,9 +12,8 @@ const defaultStoreState = [
 ]
 export default function Testrandom() {
   const [storeList, setStoreList] = useState(defaultStoreState)
-  const [menuByStoreList, setMenuByStoreList] = useState()
-
   const [random, setRandom] = useState(storeList[0]);
+  
   const setListStore = useSetRecoilState(listStoreState);
   useEffect(() => {
     getStoreData()
@@ -60,18 +59,15 @@ export default function Testrandom() {
     <div className="">
 
       <div className="text-gray-800 text-7xl my-4 ">
-        <Image src={random.image || `http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
+        <Image className="rounded-2xl" src={random.image || `http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
       </div>
-
-      <div className="grid grid-cols-4 gap-4 m-2">
-        <h1 className="text-2xl col-span-1 font-bold py-3 ">ร้าน</h1>
-        <h1 className="text-2xl col-span-3 px-5 font-bold py-3 text-left text-yellow-400 col-span-2"> {random.namestore}</h1>
-      </div>
+        <h1 className="text-2xl col-span-1 font-bold ">ร้าน</h1>
+        <h1 className="text-2xl col-span-3 px-5 font-bold text-center text-yellow-400 col-span-2"> {random.namestore}</h1>
 
       <button
         type="button"
         onClick={() => randomImg()}
-        className="bg-yellow-400 border border-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-yellow-300"
+        className="bg-yellow-400 mt-5 border border-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-yellow-300"
       >
         สุ่มอีกครั้ง
       </button>
