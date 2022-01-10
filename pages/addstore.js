@@ -9,13 +9,14 @@ import { Storelist } from "../components/storeList";
 const initialState = {
   namestore: "",
   img: "",
+  detail: "",
 };
 
 const defaultStoreState = [];
 export default function Addstore() {
   const [formStore, setFormStore] = useState(initialState);
   const [storeList, setStoreList] = useState(defaultStoreState);
-  const { namestore } = formStore;
+  const { namestore, detail } = formStore;
   const [imgFile, setImgFile] = useState();
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function Addstore() {
   };
 
   const validationStore = () => {
-    if (!namestore) {
+    if (!namestore || !detail) {
       return Swal.fire({
         icon: "error",
         title: "กรอกข้อมูลไม่ครบ",
@@ -108,6 +109,34 @@ export default function Addstore() {
     }
   }; //ตัวรับรูปภาพมาจาก uploadImage
 
+  const deleteStoreById = async (id) => {
+    try {
+      await Swal.fire({
+        icon: 'info',
+        title: 'คุณต้องการลบข้อมูลนี้หรือไม่',
+        confirmButtonText: 'ต้องการ',
+        cancelButtonText: 'ไม่ต้องการ',
+        showCancelButton: true,
+      }).then(async e => {
+        if (e.isConfirmed) {
+          await axios.delete('/api/store/' + id)
+          await Swal.fire({
+            icon: 'success',
+            title: 'ลบข้อมูลเรียบร้อยแล้ว',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          getStoreData()
+        }
+      })
+    } catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'ลบข้อมูลไม่สำเร็จ',
+      })
+    }
+  }
+
   return (
     <div>
       <Nav />
@@ -128,6 +157,17 @@ export default function Addstore() {
                 type="text"
                 placeholder="ชื่อร้าน"
                 className="border-2 border-yellow-400 rounded-md w-full h-11 outline-none px-5"
+              />
+            </div>
+            <div className="flex space-x-2 p-1 bg-yellow-100 rounded-md mt-2">
+              <textarea
+                onChange={(e) =>
+                  setFormStore({ ...formStore, detail: e.target.value })
+                }
+                value={detail}
+                type="text"
+                placeholder="ที่อยู่ / หมายเลขโทรศัพท์"
+                className="border-2 py-2 border-yellow-400 rounded-md w-full h-11 outline-none px-5 h-32"
               />
             </div>
             <div className="flex items-center justify-center w-full py-5 ">
@@ -156,11 +196,9 @@ export default function Addstore() {
               </button>
             </div>
           </form>
-          <div className="py-5">
-            <Storelist data={storeList} />
-          </div>
         </div>
       </div>
+      <Storelist data={storeList}  deleteStoreById={deleteStoreById} />
     </div>
   );
 }

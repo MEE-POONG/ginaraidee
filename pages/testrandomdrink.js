@@ -8,12 +8,14 @@ import _ from "lodash";
 import axios from "axios";
 
 const defaultSoredrinkState = [
-  { id: "1", namestore: "สุ่มอีกรอบ", image: "/images/randomnow.png" },
+  { id: "1", namestoredrink: "สุ่มเลย", image: "/images/randomnow.png" },
 ];
 
 export default function Testrandomdrink() {
   const [storedrinkList, setStoredrinkList] = useState(defaultSoredrinkState);
   const [random, setRandom] = useState(storedrinkList[0]);
+
+  const setListDrink = useSetRecoilState(listStoredrinkState);
 
   useEffect(() => {
     getDrinkData();
@@ -29,7 +31,7 @@ export default function Testrandomdrink() {
     }
   };
 
-  const setListDrink = useSetRecoilState(listStoredrinkState);
+
 
   function randomImg() {
     let ran = setInterval(() => {
@@ -52,7 +54,7 @@ export default function Testrandomdrink() {
         <Image className="rounded-2xl" src={random.image ||`http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
       </div>
         <h1 className="text-2xl col-span-1 font-bold ">คือร้าน</h1>
-        <h1 className="text-2xl px-5 font-bold py-1 text-center text-yellow-400 col-span-3">  {random.namestore}</h1>
+        <h1 className="text-2xl px-5 font-bold py-1 text-center text-yellow-400 col-span-3">  {random.namestoredrink}</h1>
       <button
         type="button"
         onClick={() => randomImg()}

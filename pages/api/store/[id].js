@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             break
         case 'DELETE':
             try {
-                const store = await Store.findOneAndRemove(req.query.id);
+                const store = await Store.deleteOne({_id:req.query.id});
                 res.status(200).json({ success: true, data: store })
             } catch (error) {
                 res.status(400).json({ success: false })

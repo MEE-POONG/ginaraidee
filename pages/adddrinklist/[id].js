@@ -5,20 +5,21 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Alldrink from "../../components/alldrink";
 import { HiOutlineSaveAs } from "react-icons/hi";
+import Image from "next/image";
 
-const defaultFormDrink = { name: "", price: "", img: "", StoredrinkId: "" };
+
+const defaultFormDrink = { name: "", price: "", img: "", storedrinkId: "" };
 export default function Adddrinklist({ }) {
   const router = useRouter();
-  // console.log(router.query.id);
-  const [Storedrink, setStoredrink] = useState();
+  const [store, setStore] = useState();
   const [formDrink, setFormDrink] = useState(defaultFormDrink);
   const [isEdit, setIsEdit] = useState(false);
   const [drinkList, setDrinkList] = useState();
   const [imgFile, setImgFile] = useState();
-  // console.log(drinkList);
+  // console.log(menuList);
   useEffect(() => {
     getDrinkData();
-    getStoredrinkData();
+    getStoreData();
   }, []);
 
   const getDrinkData = async () => {
@@ -42,8 +43,8 @@ export default function Adddrinklist({ }) {
     e.preventDefault();
     const validationError = validationDrink();
     if (validationError) return;
-    const setDataError = await setDataDrinks();
-    if (setDataError) return;
+    // const setDataError = await setDataMenus();
+    // if (setDataError) return;
     const setDataImgError = await uploadImage(imgFile);
     if (setDataImgError) return;
     setFormDrink(defaultFormDrink);
@@ -65,27 +66,27 @@ export default function Adddrinklist({ }) {
     }
   };
 
-  const setDataDrinks = async () => {
-    try {
-      if (isEdit) {
-        await axios.put("/api/drink/" + formDrink._id, formDrink);
-      } else {
-        await axios.post("/api/drink", { ...formDrink, StoredrinkdrinkId: router.query.id });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "เพิ่มข้อมูลไม่สำเร็จ",
-      });
-      return true;
-    }
-  };
+  // const setDataMenus = async () => {
+  //   try {
+  //     if (isEdit) {
+  //       await axios.put("/api/food/" + formMenu._id, formMenu);
+  //     } else {
+  //       await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+  //     }
+  //   } catch (error) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "เพิ่มข้อมูลไม่สำเร็จ",
+  //     });
+  //     return true;
+  //   }
+  // };
 
-  const getStoredrinkData = async () => {
+  const getStoreData = async () => {
     try {
       if (router.query.id) {
         const { data } = await axios.get("/api/storedrink/" + router.query.id);
-        setStoredrink(data?.data);
+        setStore(data?.data);
         console.log(data);
       }
     } catch (error) {
@@ -101,7 +102,7 @@ export default function Adddrinklist({ }) {
         _id: data.data._id,
         name: data.data.name,
         price: data.data.price,
-        StoredrinkId: data.data.StoredrinkId,
+        storedrinkId: data.data.storedrinkId,
       });
     } catch (error) {
       console.log(error);
@@ -111,8 +112,8 @@ export default function Adddrinklist({ }) {
 
   const uploadImage = async (img) => {
     try {
-      let drinkByStoredrinkData;
-      drinkByStoredrinkData = { ...formDrink };
+      let drinkByStoreData;
+      drinkByStoreData = { ...formDrink };
       if (img) {
         let formData = new FormData();
         formData.append("file", img, img.name);
@@ -121,22 +122,22 @@ export default function Adddrinklist({ }) {
           formData
         );
         console.log(data?.filename);
-        drinkByStoredrinkData.img = data?.filename || formDrink?.img;
+        drinkByStoreData.img = data?.filename || formDrink?.img;
       }
       setImgFile("");
-      console.log(drinkByStoredrinkData);
-      const setDataImgError = await setDataDrink(drinkByStoredrinkData); //ส่งไปยัง setDataStoredrink
+      console.log(drinkByStoreData);
+      const setDataImgError = await setDataDrink(drinkByStoreData); //ส่งไปยัง setDataStore
       if (setDataImgError) return;
     } catch (error) {
       return true;
     }
   }; //ส่วนเพิ่มรูปภาพ
-  const setDataDrink = async (drinkByStoredrinkData) => {
+  const setDataDrink = async (drinkByStoreData) => {
     try {
       if (isEdit) {
         await axios.put("/api/drink/" + formDrink._id, formDrink);
       } else {
-        await axios.post("/api/drink", { ...drinkByStoredrinkData, StoredrinkId: router.query.id });
+        await axios.post("/api/drink", { ...drinkByStoreData, storedrinkId: router.query.id });
       }
     } catch (error) {
       return Swal.fire({
@@ -181,15 +182,27 @@ export default function Adddrinklist({ }) {
     }
   }
 
-  if (!Storedrink) return <div>loading...</div>;
+  if (!store) return <div>loading...</div>;
   return (
     <div>
       <Nav />
       <div className="container mx-auto max-w-lg py-5">
         <div className="px-4 flex-auto">
           <div className="text-center">
-            <h1 className="text-2xl bg-shadow font-bold py-5">
-              ร้าน {Storedrink.nameStoredrink}{" "}
+            <div className="text-center py-6 rounded-2xl">
+              <Image
+                className="rounded-2xl"
+                src={
+                  `http://upload-image.gin-a-rai-dee.daddybody.company/` +
+                  store.img
+                }
+                alt=""
+                width={150}
+                height={150}
+              />
+            </div>
+            <h1 className="text-2xl bg-shadow font-bold">
+              ร้าน {store.namestoredrink}{" "}
             </h1>
             <h1 className="text-2xl bg-shadow font-bold py-5">
               เพิ่มเมนูอาหาร

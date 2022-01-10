@@ -5,11 +5,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { HiOutlineSaveAs } from "react-icons/hi";
+import Image from "next/image";
 
 const defaultFormMenu = { name: "", price: "", img: "", storeId: "" };
 export default function Addmenulist({ }) {
   const router = useRouter();
-  // console.log(router.query.id);
   const [store, setStore] = useState();
   const [formMenu, setFormMenu] = useState(defaultFormMenu);
   const [isEdit, setIsEdit] = useState(false);
@@ -65,21 +65,21 @@ export default function Addmenulist({ }) {
     }
   };
 
-  const setDataMenus = async () => {
-    try {
-      if (isEdit) {
-        await axios.put("/api/food/" + formMenu._id, formMenu);
-      } else {
-        await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "เพิ่มข้อมูลไม่สำเร็จ",
-      });
-      return true;
-    }
-  };
+  // const setDataMenus = async () => {
+  //   try {
+  //     if (isEdit) {
+  //       await axios.put("/api/food/" + formMenu._id, formMenu);
+  //     } else {
+  //       await axios.post("/api/food", { ...formMenu, storeId: router.query.id });
+  //     }
+  //   } catch (error) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "เพิ่มข้อมูลไม่สำเร็จ",
+  //     });
+  //     return true;
+  //   }
+  // };
 
   const getStoreData = async () => {
     try {
@@ -188,7 +188,18 @@ export default function Addmenulist({ }) {
       <div className="container mx-auto max-w-lg py-5">
         <div className="px-4 flex-auto">
           <div className="text-center">
-            <h1 className="text-2xl bg-shadow font-bold py-5">
+            <div className="text-center py-6">
+              <Image
+                src={
+                  `http://upload-image.gin-a-rai-dee.daddybody.company/` +
+                  store.img
+                }
+                alt=""
+                width={150}
+                height={150}
+              />
+            </div>
+            <h1 className="text-2xl bg-shadow font-bold ">
               ร้าน {store.namestore}{" "}
             </h1>
             <h1 className="text-2xl bg-shadow font-bold py-5">

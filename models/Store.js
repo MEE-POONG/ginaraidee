@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 
 const AddStoreSchema = new mongoose.Schema({
     namestore: String,
+    detail: String,
     img:String
 })
 

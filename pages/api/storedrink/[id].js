@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/dbConnect'
-import Storesdrinks from '../../../models/Storesdrinks'
+import Storedrink from '../../../models/Storedrink'
 
 
 export default async function handler(req, res) {
@@ -10,8 +10,8 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const drink = await Storesdrinks.findById(req.query.id)
-                res.status(200).json({ success: true, data: drink })
+                const storedrink = await Storedrink.findById(req.query.id)
+                res.status(200).json({ success: true, data: storedrink })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
@@ -19,16 +19,16 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                const drink = await Storesdrinks.findByIdAndUpdate(req.query.id, req.body, { upsert: true });
-                res.status(200).json({ success: true, data: drink })
+                const storedrink = await Storedrink.findByIdAndUpdate(req.query.id, req.body, { upsert: true });
+                res.status(200).json({ success: true, data: storedrink })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
             break
         case 'DELETE':
             try {
-                const drink = await Storesdrinks.findOneAndRemove(req.query.id);
-                res.status(200).json({ success: true, data: drink })
+                const storedrink = await Storedrink.deleteOne({_id:req.query.id});
+                res.status(200).json({ success: true, data: storedrink })
             } catch (error) {
                 res.status(400).json({ success: false })
             }

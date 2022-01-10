@@ -15,6 +15,7 @@ const menuByStoreState = {
     namestore: '',
     nameMenu:"",
     price:"",
+    detail:"",
   
 }
 

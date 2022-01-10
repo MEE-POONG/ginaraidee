@@ -38,7 +38,7 @@ export default function Listdrinkstore({ data, listStoredrink }) {
               />
             </div>
         <h1 className="text-2xl bg-shadow font-bold py-5">
-          ร้าน {listStoredrink.namestoredrink}
+          ร้าน {listStoredrink.namestore}
         </h1>
         <h1 className="text-2xl bg-shadow font-bold py-5">เมนูทั้งหมด</h1>
       </div>

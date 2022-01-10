@@ -10,7 +10,8 @@ const listStoreState = atom({
     id: "",
     nameStore: "",
     nameMenu:"",
-    price:""
+    price:"",
+    detail:""
     
   },
   effects_UNSTABLE: [persistAtom],

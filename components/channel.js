@@ -8,7 +8,7 @@ export function Channel() {
     <div className="container mx-auto max-w-lg">
       <div className="px-4 flex-auto">
         <div className="text-center">
-          <h1 className="text-2xl bg-shadow font-bold py-5">
+          <h1 className="text-2xl bg-shadow font-bold py-10">
             เลือกช่องทางที่ต้องการ
           </h1>
         </div>

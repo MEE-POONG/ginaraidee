@@ -8,17 +8,16 @@ import axios from "axios";
 import Image from "next/image";
 
 const defaultStoreState = [
-  { id: "1", name: "สุ่มอีกรอบ", image: "/images/randomnow.png" }
+  { id: "1", namestore: "สุ่มเลย", image: "/images/randomnow.png" }
 ]
 export default function Testrandom() {
   const [storeList, setStoreList] = useState(defaultStoreState)
   const [random, setRandom] = useState(storeList[0]);
   
   const setListStore = useSetRecoilState(listStoreState);
+
   useEffect(() => {
     getStoreData()
-    getNameMenuBystore()
-
   }, [])
 
   const getStoreData = async () => {
@@ -30,15 +29,6 @@ export default function Testrandom() {
     } catch (error) {
       console.log(error);
     }
-  }
-  const getNameMenuBystore = async () => {
-    try {
-      const { data } = await axios.get('/api/menubystore')
-      setMenuByStoreList(data?.data)//ในหน้าที่เราคลิกเลือกร้านค้า
-    } catch (error) {
-      console.log(error);
-    }
-
   }
 
 

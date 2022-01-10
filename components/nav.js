@@ -50,7 +50,7 @@ function Nav() {
 										}}
 
 									>
-										{"เพิ่มร้านน้ำ"}
+										{"เพิ่มร้านเครื่องดื่ม"}
 									</button>
 									<button
 										className="w-fill px-2 text-center text-white h-9 bg-black text-sm font-medium hover:bg-white hover:text-black rounded-md "
@@ -155,7 +155,7 @@ function Nav() {
 										}}
 
 									>
-										{"เพิ่มร้านน้ำ"}
+										{"เพิ่มร้านเครื่องดื่ม"}
 									</button>
 									<button
 										className="w-full text-left font-blod cursor-pointer hover:bg-yellow-400 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
