@@ -17,24 +17,13 @@ export default function Yourmenu() {
         <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-12 ml-4 mr-4 mb-12">
           <div>
             <span><Modalfood /></span>
-            <div className="mt-8">
-              <span className="text-2xl font-bold"> สุ่มอาหาร  </span>
-            </div>
           </div>
-
           <div>
-            <span>    <Modaldrink /></span>
-            <div className="mt-8">
-              <span className="text-2xl mt-10 font-bold">สุ่มเครื่องดื่ม  </span>
-            </div>
+            <span><Modaldrink /></span>
           </div>
-
-
           <div>
             <span>     <Modalstore /></span>
-            <div className="mt-8">
-              <span className="text-2xl mt-10 font-bold"> สุ่มร้านค้า  </span>
-            </div>
+            
           </div>
 
         </div>

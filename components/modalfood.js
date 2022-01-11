@@ -10,19 +10,23 @@ export default function Modalfood() {
   return (
     <div className=" justify-center items-center flex px-10 mt-10">
       <div className="border-0 rounded-lg shadow-lg w-full h-auto  cursor-pointer shover:shadow-2xl hover:scale-105 transform transition-all duration-500 ">
-      <div
-          className="py-10 w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5 "
+        <div
+          className="w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md group-hover:opacity-75 lg:h-80 lg:aspect-none pb-5  bg-yellow-50"
           type="button"
           onClick={() => setShowModal(true)}
         >
-          <Image 
-            src="/images/food.webp"
+          <Image
+            src="/images/เชฟ-01.png"
             alt=""
-            width={200}
-            height={180}
+            width={250}
+            height={250}
             type="button"
           />
+          <div>
+          <span className="text-2xl font-bold "> สุ่มอาหาร  </span>
+          </div>
         </div>
+
       </div>
       {showModalfood ? (
         <div className="px-5 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  shadow-lg backdrop-filter backdrop-blur-md ">
