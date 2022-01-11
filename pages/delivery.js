@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import axios from "axios";
 import { Store } from "../components/store"
 const initialState = {

@@ -26,6 +26,7 @@ export function Storelist({ data, deleteStoreById }) {
                 </h1>
                 <div className="text-center ">
                   <Image
+                  className="rounded-2xl"
                     src={
                       `http://upload-image.gin-a-rai-dee.daddybody.company/` +
                       store.img

@@ -1,5 +1,5 @@
 
-
+import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Menuall from "../../components/menuall";
 import { useRouter } from "next/router";
@@ -62,7 +62,7 @@ export default function Addmenulist({ }) {
     }
   };
 
-   const setDataMenu = async () => {
+  const setDataMenu = async () => {
     try {
       if (isEdit) {
         await axios.put("/api/food/" + formMenu._id, formMenu);
@@ -105,7 +105,7 @@ export default function Addmenulist({ }) {
     }
   };
 
- 
+
 
   const deleteFoodsById = async (id) => {
     try {
@@ -142,13 +142,25 @@ export default function Addmenulist({ }) {
       <div className="container mx-auto max-w-lg py-5">
         <div className="px-4 flex-auto">
           <div className="text-center">
+            <div className="">
+              <Image
+                className="rounded-2xl"
+                src={
+                  `http://upload-image.gin-a-rai-dee.daddybody.company/` +
+                  store.img
+                }
+                alt=""
+                width={200}
+                height={200}
+              />
+            </div>
             <h1 className="text-2xl bg-shadow font-bold py-5">
               ร้าน {store.namestore}{" "}
             </h1>
           </div>
         </div>
       </div>
-      <Menuall menuList={menuList}/>
+      <Menuall menuList={menuList} />
     </div>
   );
 }

@@ -28,6 +28,7 @@ export default function Listbistro({ data, listStore }) {
       <div className="text-center py-5">
         <div className="">
           <Image
+           className="rounded-2xl"
             src={
               `http://upload-image.gin-a-rai-dee.daddybody.company/` +
               listStore.img
@@ -41,7 +42,7 @@ export default function Listbistro({ data, listStore }) {
           ร้าน {listStore.namestore}
         </h1>
         <h1 className="text-2xl bg-shadow py-2 text-center">
-          ร้าน {listStore.detail}
+          {listStore.detail}
         </h1>
         <h1 className="text-2xl bg-shadow font-bold py-5">เมนูทั้งหมด</h1>
       </div>
@@ -51,6 +52,7 @@ export default function Listbistro({ data, listStore }) {
             <div className="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500 w-full">
               <div className="p-3 text-center">
                 <Image
+                 className="rounded-2xl"
                   src={
                     `http://upload-image.gin-a-rai-dee.daddybody.company/` +
                     img

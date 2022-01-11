@@ -190,6 +190,7 @@ export default function Addmenulist({ }) {
           <div className="text-center">
             <div className="text-center py-6">
               <Image
+              className="rounded-2xl"
                 src={
                   `http://upload-image.gin-a-rai-dee.daddybody.company/` +
                   store.img
@@ -240,7 +241,7 @@ export default function Addmenulist({ }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                   <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                    <img className="has-mask h-36 object-center" src={showImage()} />
+                    <img className="has-mask h-36 object-center rounded-xl" src={showImage()} />
                   </div>
                   <p className="pointer-none text-gray-500 "><span className="text-sm">เลือกไฟล์</span></p>
                 </div>

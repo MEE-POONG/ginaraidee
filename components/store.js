@@ -11,10 +11,10 @@ export function Store({ data }) {
       <div className="text-center">
         <h1 className="text-2xl bg-shadow font-bold py-16">ร้านอาหารทั้งหมด</h1>
       </div>
-      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((store) => (
-          <div class="flex justify-center items-center py-14 ml-10 mr-10">
-            <div class="card w-full h-48 mx-auto bg-gray-100 shadow-xl hover:shadow rounded-lg"
+          <div class="flex justify-center items-center py-14 ml-6 mr-6">
+            <div class="card w-full h-32 mx-auto bg-gray-100 shadow-xl hover:shadow rounded-lg"
               key={store}
               type="button"
               onClick={() => {
@@ -24,8 +24,9 @@ export function Store({ data }) {
               }}
             >
 
-              <div class="w-32 mx-auto rounded-full -mt-16">
+              <div class="w-32 mx-auto -mt-16">
                 <Image
+                  className="rounded-full"
                   src={
                     `http://upload-image.gin-a-rai-dee.daddybody.company/` +
                     store.img
@@ -35,7 +36,7 @@ export function Store({ data }) {
                   height={200}
                 />
               </div>
-              <div class="text-center text-2xl font-bold py-7"> ร้าน {store.namestore}</div>
+              <div class="text-center text-2xl font-bold"> ร้าน {store.namestore}</div>
             </div>
           </div>
         ))}

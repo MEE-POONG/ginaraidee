@@ -8,7 +8,7 @@ import _ from "lodash";
 import axios from "axios";
 
 const defaultMenuState = [
-  { id: "1", name: "สุ่มเลย", image: "/images/randomnow.png" }
+  { id: "1", name: "สุ่มเลย", image: "/images/randomnow.png"}
 ]
 export default function Testrandom() {
   const [menuList, setMenuList] = useState(defaultMenuState)
