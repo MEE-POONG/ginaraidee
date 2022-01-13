@@ -22,7 +22,7 @@ export default function Yourmenu() {
             <span><Modaldrink /></span>
           </div>
           <div>
-            <span>     <Modalstore /></span>
+            <span><Modalstore /></span>
             
           </div>
 
