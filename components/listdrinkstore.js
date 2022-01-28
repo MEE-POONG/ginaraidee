@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-export default function Listdrinkstore({ data, listStoredrink }) {
+export default function Listdrinkstore({listStoredrink }) {
   const [drinkByStoredrinkList, setDrinkByStoredrinkList] = useState();
 
   useEffect(() => {
