@@ -28,8 +28,8 @@ export default function Alldrink({ drinkList, getDrinkDataById, deleteDrinkById 
                                 />
                             </div>
                             <div className="">
-                                <h1 className="px-5 text-center text-left text-lg text-gray-900 font-bold">{drink.name}</h1>
-                                <h1 className="px-5 text-center text-left text-lg text-gray-900 font-bold">{drink.price} บาท</h1>
+                                <h1 className="px-5  text-left text-lg text-gray-900 font-bold">{drink.name}</h1>
+                                <h1 className="px-5  text-left text-lg text-gray-900 font-bold">{drink.price} บาท</h1>
                             </div>
                             <div className=" p-3 float-right">
                                 <div type="button">
