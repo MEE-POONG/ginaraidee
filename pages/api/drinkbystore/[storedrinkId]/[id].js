@@ -1,5 +1,5 @@
-import dbConnect from '../../../../../lib/dbConnect'
-import Drink from '../../../../../models/Drink'
+import dbConnect from '../../../../lib/dbConnect'
+import Drink from '../../../../models/Drink'
 
 
 export default async function handler(req, res) {

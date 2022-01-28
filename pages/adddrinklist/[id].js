@@ -7,9 +7,8 @@ import Alldrink from "../../components/alldrink";
 import { HiOutlineSaveAs } from "react-icons/hi";
 import Image from "next/image";
 
-
 const defaultFormDrink = { name: "", price: "", img: "", storedrinkId: "" };
-export default function Adddrinklist({ }) {
+export default function Adddrinklist({}) {
   const router = useRouter();
   const [store, setStore] = useState();
   const [formDrink, setFormDrink] = useState(defaultFormDrink);
@@ -20,19 +19,20 @@ export default function Adddrinklist({ }) {
   useEffect(() => {
     getDrinkData();
     getStoreData();
-  }, []);
+  },[]);
 
   const getDrinkData = async () => {
     try {
       if (router.query.id) {
-        const { data } = await axios.get("/api/drinkbystore/" + router.query.id);
+        const { data } = await axios.get(
+          "/api/drinkbystore/" + router.query.id
+        );
         setDrinkList(data?.data);
         console.log(data);
       }
     } catch (error) {
       console.log(error);
     }
-
   };
   const handelSubmitFile = async (event) => {
     const file = event.target.files[0];
@@ -109,7 +109,6 @@ export default function Adddrinklist({ }) {
     }
   };
 
-
   const uploadImage = async (img) => {
     try {
       let drinkByStoreData;
@@ -137,7 +136,10 @@ export default function Adddrinklist({ }) {
       if (isEdit) {
         await axios.put("/api/drink/" + formDrink._id, formDrink);
       } else {
-        await axios.post("/api/drink", { ...drinkByStoreData, storedrinkId: router.query.id });
+        await axios.post("/api/drink", {
+          ...drinkByStoreData,
+          storedrinkId: router.query.id,
+        });
       }
     } catch (error) {
       return Swal.fire({
@@ -157,30 +159,30 @@ export default function Adddrinklist({ }) {
   const deleteDrinkById = async (id) => {
     try {
       await Swal.fire({
-        icon: 'info',
-        title: 'คุณต้องการลบข้อมูลนี้หรือไม่',
-        confirmButtonText: 'ต้องการ',
-        cancelButtonText: 'ไม่ต้องการ',
+        icon: "info",
+        title: "คุณต้องการลบข้อมูลนี้หรือไม่",
+        confirmButtonText: "ต้องการ",
+        cancelButtonText: "ไม่ต้องการ",
         showCancelButton: true,
-      }).then(async e => {
+      }).then(async (e) => {
         if (e.isConfirmed) {
-          await axios.delete('/api/drink/' + id)
+          await axios.delete("/api/drink/" + id);
           await Swal.fire({
-            icon: 'success',
-            title: 'ลบข้อมูลเรียบร้อยแล้ว',
+            icon: "success",
+            title: "ลบข้อมูลเรียบร้อยแล้ว",
             showConfirmButton: false,
-            timer: 2000
-          })
-          getDrinkData()
+            timer: 2000,
+          });
+          getDrinkData();
         }
-      })
+      });
     } catch (error) {
       await Swal.fire({
-        icon: 'error',
-        title: 'ลบข้อมูลไม่สำเร็จ',
-      })
+        icon: "error",
+        title: "ลบข้อมูลไม่สำเร็จ",
+      });
     }
-  }
+  };
 
   if (!store) return <div>loading...</div>;
   return (
@@ -237,14 +239,32 @@ export default function Adddrinklist({ }) {
             </div>
             <div className="flex items-center justify-center w-full">
               <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
-                <div className="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                <div className="h-full w-full text-center flex flex-col  justify-center items-center  ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-10 h-10 text-blue-400 group-hover:text-blue-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
                   </svg>
                   <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                    <img className="has-mask h-36 object-center" src={showImage()} />
+                    <img
+                      className="has-mask h-36 object-center"
+                      src={showImage()}
+                      
+                      
+                    />
                   </div>
-                  <p className="pointer-none text-gray-500 "><span className="text-sm">เลือกไฟล์</span></p>
+                  <p className="pointer-none text-gray-500 ">
+                    <span className="text-sm">เลือกไฟล์</span>
+                  </p>
                 </div>
                 <input
                   type="file"
@@ -269,7 +289,11 @@ export default function Adddrinklist({ }) {
           </form>
         </div>
       </div>
-      <Alldrink drinkList={drinkList} getDrinkDataById={getDrinkDataById} deleteDrinkById={deleteDrinkById} />
+      <Alldrink
+        drinkList={drinkList}
+        getDrinkDataById={getDrinkDataById}
+        deleteDrinkById={deleteDrinkById}
+      />
     </div>
   );
 }

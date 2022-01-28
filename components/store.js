@@ -13,18 +13,18 @@ export function Store({ data }) {
       </div>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((store) => (
-          <div class="flex justify-center items-center py-14 ml-6 mr-6">
-            <div class="card w-full h-32 mx-auto bg-gray-100 shadow-xl hover:shadow rounded-lg"
+          <div key={store} className="flex justify-center items-center py-14 ml-6 mr-6">
+            <div
+              className="card w-full h-32 mx-auto bg-gray-100 shadow-xl hover:shadow rounded-lg"
               key={store}
               type="button"
               onClick={() => {
                 router.push({
-                  pathname: "/menuall/" + store._id
+                  pathname: "/menuall/" + store._id,
                 });
               }}
             >
-
-              <div class="w-32 mx-auto -mt-16">
+              <div className="w-32 mx-auto -mt-16">
                 <Image
                   className="rounded-full"
                   src={
@@ -36,12 +36,14 @@ export function Store({ data }) {
                   height={200}
                 />
               </div>
-              <div class="text-center text-2xl font-bold"> ร้าน {store.namestore}</div>
+              <div className="text-center text-2xl font-bold">
+                {" "}
+                ร้าน {store.namestore}
+              </div>
             </div>
           </div>
         ))}
       </div>
     </div>
-
   );
 }

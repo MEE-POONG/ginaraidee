@@ -38,7 +38,7 @@ export default function Login() {
         <div className="container mx-auto max-w-lg py-10 ">
             <div className="px-4 flex-auto">
 
-                <div className="py-5 block grid">
+                <div className="py-5 grid">
                     <div className="cursor-pointer mb-3 border-2 border-gray-300 rounded-lg px-3 bg-white">
                         <form className="w-full max-w-lg">
                             <div className="py-5 text-center">
@@ -49,7 +49,7 @@ export default function Login() {
                                     Username
                                 </label>
                                 <input className="appearance-none block w-full bg-gray-50 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" 
-                                 type="text"
+                                 
                                  name="user-name"
                                  placeholder="Username"
                                  value={username}
@@ -63,7 +63,7 @@ export default function Login() {
                                     Password
                                 </label>
                                 <input className="appearance-none block w-full bg-gray-50 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" 
-                                type="password"
+                                
                                 name="user-password"
                                 placeholder="Password"
                                 value={password}
