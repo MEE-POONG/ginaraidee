@@ -20,7 +20,7 @@ export default function Listdrinkstore({listStoredrink }) {
   };
 
   // console.log(data);
-  console.log("listStoredrink", listStoredrink._id);
+  // console.log("listStoredrink", listStoredrink._id);
   // console.log(listStore);
 
   return (

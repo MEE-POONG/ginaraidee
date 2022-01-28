@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from "../components/Navbar";
-import Listdrinkstore from '../components/Listdrinkstore';
+// import Listdrinkstore from '../components/Listdrinkstore';
+import Listdrinkstore from '../components/listdrinkstore'
 import Footer from "../components/footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -53,8 +54,11 @@ export default function Drinkstore() {
     return (
         <div>
             <Navbar />
-            <Listdrinkstore 
+            {/* <Listdrinkstore 
             data={storedrinkList} 
+            listStoredrink={listStoredrink} 
+            drinkByStoredrinkList={drinkByStoredrinkList}/> */}
+            <Listdrinkstore data={storedrinkList} 
             listStoredrink={listStoredrink} 
             drinkByStoredrinkList={drinkByStoredrinkList}/>
             <Footer />
