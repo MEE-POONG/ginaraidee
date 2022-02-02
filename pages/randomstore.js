@@ -40,9 +40,9 @@ export default function Testrandom() {
       clearInterval(ran);
     }, 2000);
   }
-  useEffect(() => {
-    randomImg();
-  }, []);
+  // useEffect(() => {
+  //   randomImg();
+  // }, []);
 
   const router = useRouter();
   return (
@@ -52,7 +52,7 @@ export default function Testrandom() {
         <Image className="rounded-2xl" src={random.image || `http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
       </div>
         <h1 className="text-2xl col-span-1 font-bold ">ร้าน</h1>
-        <h1 className="text-2xl col-span-3 px-5 font-bold text-center text-yellow-400 col-span-2"> {random.namestore}</h1>
+        <h1 className="text-2xl px-5 font-bold text-center text-yellow-400 col-span-2"> {random.namestore}</h1>
 
       <button
         type="button"

@@ -1,14 +1,13 @@
-
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { listStoredrinkState } from "../contaxt/liststroedrink";//
+import { listStoredrinkState } from "../contaxt/liststroedrink"; //
 import Image from "next/image";
-import _ from "lodash";
+// import _ from "lodash";
 import axios from "axios";
 
 const defaultSoredrinkState = [
-  { id: "1", namestoredrink: "สุ่มเลย", image: "/images/randomnow.png" },
+  { id: "1", namestoredrink: "สุ่มเลย", image: "/images/randomnow.png" }
 ];
 
 export default function Testrandomdrink() {
@@ -16,7 +15,6 @@ export default function Testrandomdrink() {
   const [random, setRandom] = useState(storedrinkList[0]);
 
   const setListDrink = useSetRecoilState(listStoredrinkState);
-
   useEffect(() => {
     getDrinkData();
   }, []);
@@ -31,8 +29,6 @@ export default function Testrandomdrink() {
     }
   };
 
-
-
   function randomImg() {
     let ran = setInterval(() => {
       setRandom(_.shuffle(storedrinkList)[0]);
@@ -41,20 +37,31 @@ export default function Testrandomdrink() {
       clearInterval(ran);
     }, 5000);
   }
-  useEffect(() => {
-    randomImg();
-  }, []);
+  // useEffect(() => {
+  //   randomImg();
+  // }, []);
 
   const router = useRouter();
-  console.log(storedrinkList);
+  // console.log(storedrinkList);
   return (
-      <div>
-          
+    <div>
       <div className="text-gray-800 text-7xl my-4 ">
-        <Image className="rounded-2xl" src={random.image ||`http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img} alt="" width={200} height={200} />
+        <Image
+          className="rounded-2xl"
+          src={
+            random.image ||
+            `http://upload-image.gin-a-rai-dee.daddybody.company/` + random.img
+          }
+          alt=""
+          width={200}
+          height={200}
+        />
       </div>
-        <h1 className="text-2xl col-span-1 font-bold ">คือร้าน</h1>
-        <h1 className="text-2xl px-5 font-bold py-1 text-center text-yellow-400 col-span-3">  {random.namestoredrink}</h1>
+      <h1 className="text-2xl col-span-1 font-bold ">คือร้าน</h1>
+      <h1 className="text-2xl px-5 font-bold py-1 text-center text-yellow-400 col-span-3">
+        {" "}
+        {random.namestoredrink}
+      </h1>
       <button
         type="button"
         onClick={() => randomImg()}
@@ -66,15 +73,14 @@ export default function Testrandomdrink() {
         className="mx-2 mb-2 md:mb-0 bg-yellow-400 border border-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-yellow-300"
         type="button"
         onClick={() => {
-            setListDrink(random)
+          setListDrink(random);
           router.push({
-            pathname: "/drinkstore"//ลิงค์ไปไหนสักที่
+            pathname: "/drinkstore", //ลิงค์ไปไหนสักที่
           });
         }}
       >
         {"ตกลง"}
       </button>
-
-      </div>
-  )
+    </div>
+  );
 }

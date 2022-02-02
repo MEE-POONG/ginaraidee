@@ -31,8 +31,6 @@ export default function Testrandom() {
       console.log(error);
     }
   }
-
-
   function randomImg() {
     let ran = setInterval(() => {
       setRandom(_.shuffle(menuList)[0]);
@@ -41,12 +39,13 @@ export default function Testrandom() {
       clearInterval(ran);
     }, 5000);
   }
-  useEffect(() => {
-    randomImg();
-  },[]);
+
+  // useEffect(() => {
+  //   randomImg();
+  // },[]);
 
   const router = useRouter();
-  console.log(menuList);
+  // console.log(menuList);
   return (
     <div className="">
     
